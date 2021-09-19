@@ -1,0 +1,31 @@
+아래 내용은 dir > dir.txt 로 생성한 것이다.
+본 파일을 읽어들여 이를 스트링과 리스트로 적절히 가공하여 다음 미션을 수행하시오.
+1) .py 파일이 몇 개인지 출력하시오.
+2) .py 파일들의 목록을 출력하시오.
+3) .py 파일들의 용량(kb)를 출력하시오.
+
+
+ Volume in drive D is 데이터(3T)
+ Volume Serial Number is AA24-F6B4
+
+ Directory of D:\Work\@@Python\LectureMaterials\06_(ch6)_문자열\Ch06
+
+2020-10-14  오전 02:10    <DIR>          .
+2020-10-14  오전 02:10    <DIR>          ..
+2020-10-14  오전 12:37             1,861 @escape_sequence.py
+2020-10-14  오전 02:10             1,599 @getcwd.py
+2020-10-14  오전 01:52             6,326 @str_methods.py
+2020-10-14  오전 02:00             5,268 @str_methods_etc.py
+2019-10-08  오전 05:51             1,272 dir.txt
+2018-11-30  오후 04:33               124 formatting1.py
+2018-11-19  오후 12:08                58 formatting2.py
+2018-11-19  오후 12:08                67 formatting3.py
+2018-11-19  오후 12:09                94 formatting4.py
+2018-11-30  오후 04:36               207 formatting5.py
+2020-10-14  오전 01:57               715 padding.py
+2020-10-14  오전 02:10             1,551 tmp.txt
+2019-10-08  오후 07:46             1,505 yesterday.py
+2018-11-19  오후 12:06               703 yesterday.txt
+2020-10-14  오전 02:10                 0 한글.txt
+              15 File(s)         21,350 bytes
+               2 Dir(s)  2,546,063,503,360 bytes free
