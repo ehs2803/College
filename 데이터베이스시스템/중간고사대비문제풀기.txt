@@ -1,0 +1,82 @@
+1. 데이터 추상화의 세가지 단계(3 level architecture) 가 아래 그림과 같다. 이에 대한 설명 중
+적절하지 않은 것을 2개 선택하시오.
+a. 최상위 단계인 view level에서는 데이터베이스 전체에 대한 내용을 기술한다.
+b. logical level에서는 데이터베이스 사용자로 하여금 데이터베이스의 복잡한 물리적 구조
+를 알 필요가 없도록 한다.
+c. logical level 에서는 데이터베이스에 어떤 정보를 저장하여야 하는가를 기술된다.
+d. physical level 에서는 데이터를 기억장치에 어떤 방식으로 저장할 것인가를 상세하게
+기술한다.
+e. physical level에서 변경이 있을 경우 logical level에서도 그와 관련된 내용들이 변경되어
+야 한다. 
+a,b -> a e
+
+2. 관계형 모델(Relational Model) 에 대한 설명 중 옳은 것을 2개 선택하시오.
+a. 릴레이션(테이블) r의 튜플(tuple, row, 행)들간에는 순서 관계가 존재하지 않는다.
+b. 릴레이션 r의 속성들 가운데 일부는 원자적(Atomic) 이어야 한다.
+c. 릴레이션 r의 개별 속성 Ai는 한가지 이상의 domain들로 정의된다.
+d. 릴레이션 r이 주소(주소 값 예: “서울시 성북구 정릉동 16-1”) 속성을 가질 경우 원자
+적이지 않은 것으로 판단한다.
+e. 릴레이션 r은 중복된 튜플을 가질 수 없다
+a,d,e?? -> a e
+
+3. 릴레이션(테이블) R의 속성은 (A, B, C, D, E)이다. 속성 B와 D의 조합인 (B, D) 만이 R의 후보
+키(Candidate Key)이다. R의 수퍼키(Super Key)를 4개까지만 제시하고 주키(Primary Key)도 제시
+하시오. 
+수퍼키 : (B,D), (B,D,A), (B,D,C), (B,D,E)  / 주키 : (B,D)
+
+4. 데이터 중복(Data Redundancy)에 따른 장점 1가지와 단점 2가지를 제시하시오.
+장점 : 실수로 데이터가 삭제됐을 시 의도치 않은 데이터 보존이 가능하다.
+단점 : 저장공간의 낭비와 액세스 비용도 늘어나게 된다. 이는 곧 데이터의 비일관성으로 이어진다.
+
+5. x
+
+6. 트랜잭션(Transaction)의 원자성(Atomicity)를 설명하시오
+데이터 조작이 전부 성공 혹은 실패할지 보증하는 구조
+즉 트랜잭션이 수행된다면 완전히 끝나야 함을 의미한다. 즉 한 트랙잭션에 여러 연산들이
+있을 수 있는데, 이 연산들이 전부 실패되거나 전부 성공해야 함을 의미한다.
+all or none 요구 조건을 원자성이라고 한다.
+
+7. x
+
+8. 학과명이 ‘Computer Engineering’ 인 학과에 소속된 학생들의 학번과 이름을 조회하는 SQL
+을 작성하시오
+select ID, name
+from student
+where dept_name='computer Engineering'
+
+9.건물명이 ‘Watson’인 건물에서 운영중인 학과에 소속된 교수들의 평균연봉을 학과별로 구
+분하여 조회하는 SQL을 작성하시오. 단, from 절에 Cartesian Product(카티션 곱)를 사용하시
+오. from 절에 하위중첩 질의(Nested SQL)를 사용하지 마시오
+select dept_name, avg(salary) as avg_salary
+from department, instructor
+where building='Watson' and department.dept_name=instructor.dept_name
+group by dept_name
+
+10. x
+
+11.takes 테이블의 grade 컬럼은 학생이 강좌를 이수 완료한 경우 성적으로 ‘A’, ‘B’, ‘C’, ‘D’, ‘F’를
+가진다. 하지만, 수강 중에는 아직 이수 완료하지 않은 상태이므로 grade 컬럼은 null을 가
+진다. 학과 ‘Computer Engineering’에 소속된 학생들 가운데 현재 1개 이상 강좌들을 수강
+중에 있는 학생들의 ID, name을 조회한 결과를 제공하는 SQL을 작성하시오. 조회 결과는
+중복되지 않은 내용으로 구성되도록 하시오. 단, where 절에 EXISTS을 이용하는 중첩하위
+질의(Nested SQL)를 사용하시오. from 절에 Cartesian Product(카티션 곱)를 사용하지 마시오
+select distinct student.ID, name
+from takes, student
+where grade is not null and takes.ID=student.ID and dept_name='computer engineering'
+
+
+12. 본 문제에 국한하여 스키마 다이어그램의 advisor를 아래와 같이 변경한 것으로 한다. 즉,
+(s_id, i_id)가 advisor 테이블의 주키(Primary Key)인 것으로 변경한다. i_id는 지도교수의 ID이
+고 s_id는 지도학생의 ID이다. 이에 따라, advisor 테이블은 한 학생이 여러 교수들로부터
+지도받고 한 교수가 여러 학생들을 지도하는 것을 표현한다.
+이름이 ‘Einstein’ 인 교수와 이름이 ‘Srinivasan’ 인 교수가 함께 지도하고 있는 학생의 ID, 
+name을 조회하는 SQL을 집합연산(Set Operation)을 이용하여 작성하시오. 단, from 절에
+Cartesian Product(카티션 곱)를 사용하시오. from 절에 하위중첩 질의(Nested SQL)를 사용하지
+마시오
+(select student.ID, stduent.name
+from student, instructor, advisor
+where instructor.name='Einstein' and instructor.ID=advisor.i_id and advisor.s_id=student.ID)
+intersect
+(select student.ID, stduent.name
+from student, instructor, advisor
+where instructor.name='Srinivasan' and instructor.ID=advisor.i_id and advisor.s_id=student.ID)

@@ -1,0 +1,675 @@
+#define WIN32_LEAN_AND_MEAN				// trim the excess fat from Windows
+
+/*****************************************************
+
+	Robot Example
+
+
+	Animates a walking robot-like figure.
+
+******************************************************/
+
+////// Includes
+#include <windows.h>					// standard Windows app include
+#include <gl/gl.h>						// standard OpenGL include
+#include <gl/glu.h>						// OpenGL utilties
+#include <GL/glut.h>
+////// Global Variables
+
+float angle = 0.0f;						// current angle of the rotating triangle
+HDC g_HDC;								// global device context
+bool fullScreen = false;
+float location = -15.0;
+float location1 = -15.0;
+////// Robot variables
+float legAngle[4] = { 0.0f, 0.0f,-30.0f,-30.0f };		// each leg's current angle
+float armAngle[4] = { 0.0f, 0.0f,90.0f,90.0f };
+
+bool isClick = false;
+int Width = 600;
+int Height = 800;
+
+// DrawCube
+// desc: since each component of the robot is made up of
+//       cubes, we will use a single function that will
+//		 draw a cube at a specified location.
+void DrawCube(float xPos, float yPos, float zPos)
+{
+	glPushMatrix();
+	glTranslatef(xPos, yPos, zPos);
+	glBegin(GL_POLYGON);
+	glVertex3f(0.0f, 0.0f, 0.0f);	// top face
+	glVertex3f(0.0f, 0.0f, -1.0f);
+	glVertex3f(-1.0f, 0.0f, -1.0f);
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+
+	glVertex3f(0.0f, 0.0f, 0.0f);	// front face
+	glVertex3f(-1.0f, 0.0f, 0.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+	glVertex3f(0.0f, -1.0f, 0.0f);
+
+	// right face
+	glVertex3f(0.0f, 0.0f, -1.0f);
+	glVertex3f(0.0f, 0.0f, 0.0f);
+	glVertex3f(0.0f, -1.0f, 0.0f);
+	glVertex3f(0.0f, -1.0f, -1.0f);
+
+	glVertex3f(-1.0f, 0.0f, 0.0f);	// left face
+	glVertex3f(-1.0f, 0.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+
+	glVertex3f(0.0f, -1.0f, 0.0f);	// bottom face   mid = 0.0
+	glVertex3f(0.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, 0.0f);
+
+	// back face
+	glVertex3f(0.0f, 0.0f, -1.0f);
+	glVertex3f(0.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, 0.0f, -1.0f);
+
+	glEnd();
+	glPopMatrix();
+}
+
+// DrawArm
+// desc: draws one arm
+void DrawArm(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g, b);	// red
+	glTranslatef(xPos, yPos, zPos);
+	glScalef(1.0f, 2.0f, 1.0f);		// arm is a 1x4x1 cube
+	DrawCube(0.0f, 0.0f, 0.0f);
+
+	glPopMatrix();
+}
+//DrawArm(2.5f, 0.0f, -0.5f);
+void DrawArm1(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g, b);	// red
+	glTranslatef(2.5, -1.0, 2.0);
+	glScalef(1.0f, 2.0f, 1.0f);		// arm is a 1x4x1 cube
+	DrawCube(0.0f, 0.0f, 0.0f);
+
+	glColor3f(r, g, b);
+	glTranslatef(0.0, -1.0, 0.0);
+	glScalef(1.0f, 0.2f, 1.0f);
+	DrawCube(0.0f, 0.0f, 0.0f);
+	glPopMatrix();
+}
+// DrawHead
+// desc: draws the robot head
+void DrawHead(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g, b);	// white
+	glTranslatef(xPos, yPos, zPos);
+	glTranslatef(-1.0,-1.0,-1.0);
+	glScalef(2.0f, 2.0f, 2.0f);		// head is a 2x2x2 cube
+	glutSolidSphere(0.5, 10, 10);
+	glPopMatrix();
+}
+
+// DrawTorso
+// desc: draws the robot torso
+void DrawTorso(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g, b);	// blue
+	glTranslatef(xPos, yPos, zPos);
+	glScalef(3.0f, 5.0f, 2.0f);		// torso is a 3x5x2 cube
+	DrawCube(0.0f, 0.0f, 0.0f);
+	glPopMatrix();
+}
+
+void DrawTorso1(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g, b);	// blue
+	glTranslatef(xPos, yPos, zPos);
+	glScalef(3.0f, 5.0f, 2.0f);		// torso is a 3x5x2 cube
+	DrawCube(0.0f, 0.0f, 0.0f);
+	glPopMatrix();
+}
+
+// DrawLeg
+// desc: draws a single leg
+void DrawLeg(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g,b);	// yellow
+	glTranslatef(xPos, yPos, zPos);
+	glScalef(1.0f, 2.5f, 1.0f);		// leg is a 1x5x1 cube
+	DrawCube(0.0f, 0.0f, 0.0f);
+
+
+	glPopMatrix();
+}
+
+void DrawLeg1(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	glPushMatrix();
+	glColor3f(r, g, b);
+	glTranslatef(-0.5, -6.0, -4.0);
+	glScalef(1.0f, 2.5f, 1.0f);		// leg is a 1x5x1 cube
+	DrawCube(0.0f, 0.0f, 0.0f);
+
+	glColor3f(r, g, b);
+	glTranslatef(0.0, -1.0, 0.0);
+	glScalef(1.5f, 0.2f, 1.5f);
+	DrawCube(0.0f, 0.0f, 0.0f);
+
+	glPopMatrix();
+}
+
+// DrawRobot
+// desc: draws the robot located at (xpos,ypos,zpos)
+void DrawRobot(float xPos, float yPos, float zPos, float r, float g, float b)
+{
+	static bool leg1 = true;		// robot's leg states
+	static bool leg2 = false;		// true = forward, false = back
+
+	static bool arm1 = true;
+	static bool arm2 = false;
+
+
+
+	//###############################################################################################################
+	glPushMatrix();
+
+	glTranslatef(xPos, yPos, zPos);	// draw robot at desired coordinates
+
+// draw components
+	glColor3f(0.0f, 1.0f, 0.0f);
+	DrawHead(1.0f, 2.0f, 0.0f,r,g,b);
+	DrawTorso(1.5f, 0.0f, 0.0f, r, g, b);
+	glPushMatrix();
+	// if leg is moving forward, increase angle, else decrease angle
+	if (arm1) {
+		armAngle[0] = armAngle[0] + 0.03f;
+	}
+	else {
+		armAngle[0] = armAngle[0] - 0.03f;
+	}
+
+	// once leg has reached its maximum angle in a direction,
+	// reverse it
+	if (armAngle[0] >= 15.0f)
+		arm1 = false;
+	if (armAngle[0] <= -15.0f)
+		arm1 = true;
+
+	// move the leg away from the torso and rotate it to give "walking" effect
+	glTranslatef(0.0f, -0.5f, 0.0f);
+	glRotatef(armAngle[0], 1.0f, 0.0f, 0.0f);
+	DrawArm(2.5f, 0.0f, -0.5f, r, g, b);
+
+
+	glPopMatrix();
+	//###############################################################################################################
+
+	glPushMatrix();
+	// if leg is moving forward, increase angle, else decrease angle
+	if (arm1)
+		armAngle[2] = armAngle[2] + 0.03f;
+	else
+		armAngle[2] = armAngle[2] - 0.03f;
+
+	// once leg has reached its maximum angle in a direction,
+	// reverse it
+
+
+	// move the leg away from the torso and rotate it to give "walking" effect
+	glTranslatef(-4.0f, -0.5f, 0.0f);
+	glRotatef(armAngle[2], 1.0f, 0.0f, 0.0f);
+	DrawArm1(2.5f, 0.0f, -0.5f, r, g, b);
+	glPopMatrix();
+
+	//###############################################################################################################
+	glPushMatrix();
+	// if leg is moving forward, increase angle, else decrease angle
+	if (arm2)
+		armAngle[1] = armAngle[1] + 0.03f;
+	else
+		armAngle[1] = armAngle[1] - 0.03f;
+
+	// once leg has reached its maximum angle in a direction,
+	// reverse it
+	if (armAngle[1] >= 15.0f)
+		arm2 = false;
+	if (armAngle[1] <= -15.0f)
+		arm2 = true;
+
+	// move the leg away from the torso and rotate it to give "walking" effect
+	glTranslatef(0.0f, -0.5f, 0.0f);
+	glRotatef(armAngle[1], 1.0f, 0.0f, 0.0f);
+	DrawArm(-1.5f, 0.0f, -0.5f, r, g, b);
+	//DrawArm1(2.5f, 0.0f, -0.5f);
+	glPopMatrix();
+	//###############################################################################################################
+	glPushMatrix();
+	// if leg is moving forward, increase angle, else decrease angle
+	if (arm2)
+		armAngle[3] = armAngle[3] + 0.03f;
+	else
+		armAngle[3] = armAngle[3] - 0.03f;
+
+
+	// move the leg away from the torso and rotate it to give "walking" effect
+	glTranslatef(0.0f, -0.5f, 0.0f);
+	glRotatef(armAngle[3], 1.0f, 0.0f, 0.0f);
+	//DrawArm(-1.5f, 0.0f, -0.5f);
+	DrawArm1(2.5f, 0.0f, -0.5f, r, g, b);
+	glPopMatrix();
+
+
+	//###############################################################################################################
+	// we want to rotate the legs relative to the robot's position in the world
+	// this is leg 1, the robot's right leg
+	glPushMatrix();
+
+	// if leg is moving forward, increase angle, else decrease angle
+	if (leg1)
+		legAngle[0] = legAngle[0] + 0.03f;
+	else
+		legAngle[0] = legAngle[0] - 0.03f;
+
+	// once leg has reached its maximum angle in a direction,
+	// reverse it
+	if (legAngle[0] >= 15.0f)
+		leg1 = false;
+	if (legAngle[0] <= -15.0f)
+		leg1 = true;
+
+	// move the leg away from the torso and rotate it to give "walking" effect
+	glTranslatef(0.0f, -0.5f, 0.0f);
+	glRotatef(legAngle[0], 1.0f, 0.0f, 0.0f);
+
+	// draw the leg
+	DrawLeg(-0.5f, -5.0f, -0.5f, r, g, b);
+	//DrawLeg1(-0.5f, -5.0f, -0.5f);
+	glPopMatrix();
+	//###############################################################################################################
+	glPushMatrix();
+
+	// if leg is moving forward, increase angle, else decrease angle
+	if (leg1)
+		legAngle[2] = legAngle[2] + 0.03f;
+	else
+		legAngle[2] = legAngle[2] - 0.03f;
+
+	// once leg has reached its maximum angle in a direction,
+	// reverse it
+	if (legAngle[0] >= 15.0f)
+		leg1 = false;
+	if (legAngle[0] <= -15.0f)
+		leg1 = true;
+
+	// move the leg away from the torso and rotate it to give "walking" effect
+	glTranslatef(0.0f, -0.5f, 0.0f);
+	glRotatef(legAngle[2], 1.0f, 0.0f, 0.0f);
+
+	// draw the leg
+	//DrawLeg(-0.5f, -5.0f, -0.5f);
+	DrawLeg1(-0.5f, -5.0f, -0.5f, r, g, b);
+	glPopMatrix();
+	//###############################################################################################################
+
+
+	// do the same as above with leg 2, the robot's left leg
+	glPushMatrix();
+
+	if (leg2)
+		legAngle[1] = legAngle[1] + 0.03f;
+	else
+		legAngle[1] = legAngle[1] - 0.03f;
+
+	if (legAngle[1] >= 15.0f)
+		leg2 = false;
+	if (legAngle[1] <= -15.0f)
+		leg2 = true;
+
+	glTranslatef(0.0f, -0.1f, 0.0f);
+	glRotatef(legAngle[1], 1.0f, 0.0f, 0.0f);
+	DrawLeg(1.5f, -5.0f, -0.5f, r, g, b);
+
+	glPopMatrix();
+	//#############################################
+	glPushMatrix();
+
+	if (leg2)
+		legAngle[3] = legAngle[3] + 0.03f;
+	else
+		legAngle[3] = legAngle[3] - 0.03f;
+
+	if (legAngle[1] >= 15.0f)
+		leg2 = false;
+	if (legAngle[1] <= -15.0f)
+		leg2 = true;
+
+
+	glRotatef(legAngle[3], 1.0f, 0.0f, 0.0f);
+
+	glTranslatef(2.0f, -0.1f, 0.0f);
+	DrawLeg1(-0.5f, -5.0f, -0.5f, r, g, b);
+	glPopMatrix();
+
+	glPopMatrix();
+}
+
+
+void DrawGround() {
+	glPushMatrix();
+	glClear(GL_COLOR_BUFFER_BIT);       //컬러버퍼에 초기화 색을 가함
+	glColor3f(0.5, 0.5, 0.5);           //회색
+	glTranslatef(-0.5, -0.5, -0.5);
+	glScaled(1.0, 1.0, 1.0);
+	glBegin(GL_POLYGON);                //사각형
+	glVertex3f(2.0f, -0.05f, 0.0f);	// top face
+	glVertex3f(2.0f, -0.05f, -1.0f);
+	glVertex3f(-2.1f, -0.05f, -1.0f);
+	glVertex3f(-2.1f, -0.05f, 0.0f);
+
+	glEnd();
+	glFlush();
+	glPopMatrix();
+
+}
+
+void MyMouseClick(GLint Button, GLint State, GLint X, GLint Y) {
+	if (Button == GLUT_LEFT_BUTTON && State == GLUT_DOWN) {
+		if (isClick == false) isClick = true;
+		else isClick = false;
+	}
+}
+
+void MyLightInit() {
+	GLfloat light0_ambient[] = { 0.3f,0.3f,0.3f,1.0f }; 
+	GLfloat light0_diffuse[] = { 0.7f,0.7f,0.7f,1.0f }; 
+	GLfloat light0_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+
+	glEnable(GL_LIGHTING);      //조명 활성화
+	glEnable(GL_LIGHT0);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light0_specular);
+
+	glEnable(GL_LIGHT0);
+	glEnable(GL_COLOR_MATERIAL);
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	glMateriali(GL_FRONT, GL_SHININESS, 128);
+
+	glEnable(GL_DEPTH_TEST); // 깊이 테스팅 사용
+	glEnable(GL_NORMALIZE);  // 정규화
+	glEnable(GL_SMOOTH);     // 각 정점의 색상을 부드럽게 연결하여 칠해지도록  하므로, 각정점에 적용된 색상이 혼합되어 적용된다. 
+	glEnable(GL_LIGHTING);   // 지엘 조명. 빛을 받는 각도에 따라 로봇 색상이 변화
+}
+
+void Render()
+{
+	MyLightInit();
+	glLoadIdentity();
+	glOrtho(-10.0, 10.0, -10.0, 10.0, -20.0, 10.0);
+	int temp = 0.0;
+	glEnable(GL_DEPTH_TEST);				// enable depth testing
+
+	// do rendering here
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);					// clear to black
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// clear screen and depth buffer
+	glMatrixMode(GL_MODELVIEW);
+
+
+	if (isClick) {
+		location = location + 0.0;
+		location1 = location1 + 0.0;
+	}
+	else {
+		location = location + 0.001;
+		location1 = location1 + 0.0005;
+	}
+	if (location >= 15.0) location = -15.0;
+	if (location1 >= 15.0) location1 = -15.0;
+
+	glLoadIdentity();
+	gluLookAt(5.0, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	glTranslatef(location, 0.0f, -30.0f);	// move to (0, 0, -30)
+	glRotatef(270.0, 0.0f, 1.0f, 0.0f);	// rotate the robot on its y-axis
+	DrawRobot(0.0f, 0.0f, 0.0f, 1.0, 0.0, 0.0);		// draw the robot
+
+	glLoadIdentity();					// reset matrix
+	gluLookAt(5.0, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	glTranslatef(0.0f, 0.0, -30.0f + location1);	// move to (0, 0, -30)
+	glRotatef(180.0, 0.0f, 1.0f, 0.0f);	// rotate the robot on its y-axis
+	DrawRobot(0.0f, 0.0f, 0.0f, 1.0, 1.0, 0.0);		// draw the robot*/
+
+	glLoadIdentity();					// reset matrix
+	gluLookAt(5.0, 10.0, 20.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	glTranslatef(0.0f - location, 0.0, -40.0f);	// move to (0, 0, -30)
+	glRotatef(90.0, 0.0f, 1.0f, 0.0f);	// rotate the robot on its y-axis
+	DrawRobot(0.0f, 0.0f, 0.0f, 0.0, 0.0, 1.0);		// draw the robot*/
+	
+	glFlush();
+	SwapBuffers(g_HDC);			// bring backbuffer to foreground
+	
+}
+
+// function to set the pixel format for the device context
+void SetupPixelFormat(HDC hDC)
+{
+	int nPixelFormat;					// our pixel format index
+
+	static PIXELFORMATDESCRIPTOR pfd = {
+		sizeof(PIXELFORMATDESCRIPTOR),	// size of structure
+		1,								// default version
+		PFD_DRAW_TO_WINDOW |			// window drawing support
+		PFD_SUPPORT_OPENGL |			// OpenGL support
+		PFD_DOUBLEBUFFER,				// double buffering support
+		PFD_TYPE_RGBA,					// RGBA color mode
+		32,								// 32 bit color mode
+		0, 0, 0, 0, 0, 0,				// ignore color bits, non-palettized mode
+		0,								// no alpha buffer
+		0,								// ignore shift bit
+		0,								// no accumulation buffer
+		0, 0, 0, 0,						// ignore accumulation bits
+		16,								// 16 bit z-buffer size
+		0,								// no stencil buffer
+		0,								// no auxiliary buffer
+		PFD_MAIN_PLANE,					// main drawing plane
+		0,								// reserved
+		0, 0, 0 };						// layer masks ignored
+
+	nPixelFormat = ChoosePixelFormat(hDC, &pfd);	// choose best matching pixel format
+
+	SetPixelFormat(hDC, nPixelFormat, &pfd);		// set pixel format to device context
+}
+
+// the Windows Procedure event handler
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	static HGLRC hRC;					// rendering context
+	static HDC hDC;						// device context
+	int width, height;					// window width and height
+
+	switch (message)
+	{
+	case WM_CREATE:					// window is being created
+
+		hDC = GetDC(hwnd);			// get current window's device context
+		g_HDC = hDC;
+		SetupPixelFormat(hDC);		// call our pixel format setup function
+
+		// create rendering context and make it current
+		hRC = wglCreateContext(hDC);
+		wglMakeCurrent(hDC, hRC);
+		
+		return 0;
+		break;
+
+	case WM_CLOSE:					// windows is closing
+
+		// deselect rendering context and delete it
+		wglMakeCurrent(hDC, NULL);
+		wglDeleteContext(hRC);
+
+		// send WM_QUIT to message queue
+		PostQuitMessage(0);
+
+		return 0;
+		break;
+
+	case WM_SIZE:
+		height = HIWORD(lParam);		// retrieve width and height
+		width = LOWORD(lParam);
+
+		if (height == 0)					// don't want a divide by zero
+		{
+			height = 1;
+		}
+
+		glViewport(0, 0, width, height);		// reset the viewport to new dimensions
+		glMatrixMode(GL_PROJECTION);			// set projection matrix current matrix
+		glLoadIdentity();						// reset projection matrix
+
+		// calculate aspect ratio of window
+		gluPerspective(54.0f, (GLfloat)width / (GLfloat)height, 1.0f, 1000.0f);
+
+		glMatrixMode(GL_MODELVIEW);				// set modelview matrix
+		glLoadIdentity();						// reset modelview matrix
+		
+		return 0;
+		break;
+
+	default:
+		break;
+	}
+
+	return (DefWindowProc(hwnd, message, wParam, lParam));
+}
+
+// the main windows entry point
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+{
+	WNDCLASSEX windowClass;		// window class
+	HWND	   hwnd;			// window handle
+	MSG		   msg;				// message
+	bool	   done;			// flag saying when our app is complete
+	DWORD	   dwExStyle;						// Window Extended Style
+	DWORD	   dwStyle;						// Window Style
+	RECT	   windowRect;
+
+	// temp var's
+	int width = 800;
+	int height = 600;
+	int bits = 32;
+
+	//fullScreen = TRUE;
+
+	windowRect.left = (long)0;						// Set Left Value To 0
+	windowRect.right = (long)width;						// Set Right Value To Requested Width
+	windowRect.top = (long)0;							// Set Top Value To 0
+	windowRect.bottom = (long)height;						// Set Bottom Value To Requested Height
+
+	// fill out the window class structure
+	windowClass.cbSize = sizeof(WNDCLASSEX);
+	windowClass.style = CS_HREDRAW | CS_VREDRAW;
+	windowClass.lpfnWndProc = WndProc;
+	windowClass.cbClsExtra = 0;
+	windowClass.cbWndExtra = 0;
+	windowClass.hInstance = hInstance;
+	windowClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);	// default icon
+	windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);		// default arrow
+	windowClass.hbrBackground = NULL;								// don't need background
+	windowClass.lpszMenuName = NULL;								// no menu
+	windowClass.lpszClassName = "MyClass";
+	windowClass.hIconSm = LoadIcon(NULL, IDI_WINLOGO);		// windows logo small icon
+	
+	// register the windows class
+	if (!RegisterClassEx(&windowClass))
+		return 0;
+
+	if (fullScreen)								// fullscreen?
+	{
+		DEVMODE dmScreenSettings;					// device mode
+		memset(&dmScreenSettings, 0, sizeof(dmScreenSettings));
+		dmScreenSettings.dmSize = sizeof(dmScreenSettings);
+		dmScreenSettings.dmPelsWidth = width;			// screen width
+		dmScreenSettings.dmPelsHeight = height;			// screen height
+		dmScreenSettings.dmBitsPerPel = bits;				// bits per pixel
+		dmScreenSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+		glutMouseFunc(MyMouseClick);
+		// 
+		if (ChangeDisplaySettings(&dmScreenSettings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
+		{
+			// setting display mode failed, switch to windowed
+			MessageBox(NULL, "Display mode failed", NULL, MB_OK);
+			fullScreen = FALSE;
+		}
+	}
+
+	if (fullScreen)								// Are We Still In Fullscreen Mode?
+	{
+		dwExStyle = WS_EX_APPWINDOW;					// Window Extended Style
+		dwStyle = WS_POPUP;						// Windows Style
+		ShowCursor(FALSE);						// Hide Mouse Pointer
+	}
+	else
+	{
+		dwExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;			// Window Extended Style
+		dwStyle = WS_OVERLAPPEDWINDOW;					// Windows Style
+	}
+
+	AdjustWindowRectEx(&windowRect, dwStyle, FALSE, dwExStyle);		// Adjust Window To True Requested Size
+
+	// class registered, so now create our window
+	hwnd = CreateWindowEx(NULL,									// extended style
+		"MyClass",							// class name
+		"2019305059 이현수",		// app name
+		dwStyle | WS_CLIPCHILDREN |
+		WS_CLIPSIBLINGS,
+		0, 0,								// x,y coordinate
+		windowRect.right - windowRect.left,
+		windowRect.bottom - windowRect.top, // width, height
+		NULL,									// handle to parent
+		NULL,									// handle to menu
+		hInstance,							// application instance
+		NULL);								// no extra params
+
+// check if window creation failed (hwnd would equal NULL)
+	if (!hwnd)
+		return 0;
+	
+	ShowWindow(hwnd, SW_SHOW);			// display the window
+	UpdateWindow(hwnd);					// update the window
+
+	done = false;						// intialize the loop condition variable
+
+	// main message loop
+	while (!done)
+	{
+		PeekMessage(&msg, hwnd, NULL, NULL, PM_REMOVE);
+		
+		if (msg.message == WM_QUIT)		// do we receive a WM_QUIT message?
+		{
+			done = true;				// if so, time to quit the application
+		}
+		else
+		{
+			Render();
+			
+			TranslateMessage(&msg);		// translate and dispatch to event queue
+			DispatchMessage(&msg);
+		}
+	}
+
+	if (fullScreen)
+	{
+		ChangeDisplaySettings(NULL, 0);					// If So Switch Back To The Desktop
+		ShowCursor(TRUE);						// Show Mouse Pointer
+	}
+
+	return msg.wParam;
+}

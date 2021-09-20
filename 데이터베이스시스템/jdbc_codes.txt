@@ -1,0 +1,207 @@
+import java.sql.*;
+import java.sql.SQLException;
+
+public class jdbc {
+
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            Statement stmt = conn.createStatement();
+            System.out.println("MS-SQL 서버 접속에 성공하였습니다.1");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM instructor");
+            while( rs.next() ) {
+                   String field1 = rs.getString("name");
+                   String field2 = rs.getString("dept_name");
+                   String field3 = rs.getString(3);
+                   System.out.print(field1 + "\t");
+                   System.out.print(field2 + "\t");
+                   System.out.println(field3 );
+                  }
+            rs.close();
+            stmt.close();   
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+===================================
+import java.sql.*;
+import java.sql.SQLException;
+
+public class jdbc {
+
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            Statement stmt = conn.createStatement();
+            System.out.println("MS-SQL 서버 접속에 성공하였습니다.1");
+            String d_name; 
+            float sal; 
+            ResultSet rset= stmt.executeQuery("select dept_name, avg(salary) "
+            					+ "from instructor group by dept_name"); 
+            while (rset.next()) { 
+            	d_name= rset.getString("dept_name"); 
+            	sal= rset.getFloat(2); 
+            	System.out.println(d_name+ " " + sal); 
+            }
+            rset.close();
+            stmt.close();   
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+==================================================
+import java.sql.*;
+import java.sql.SQLException;
+
+public class jdbc {
+
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            Statement stmt = conn.createStatement();
+            System.out.println("MS-SQL 서버 접속에 성공하였습니다.1");
+            
+            ResultSet rs= stmt.executeQuery("select * from instructor"); 
+            while (rs.next()) { 
+            	 String field1 = rs.getString("name");
+                 String field2 = rs.getString("dept_name");
+                 Float field3 = rs.getFloat("salary");
+            
+                 if (rs.wasNull()) {
+                	 System.out.println("Got null value");
+                	 break;
+                 }
+                 System.out.print(field1 + "\t");
+                 System.out.print(field2 + "\t");
+                 System.out.println(field3);
+            }
+
+            rs.close();
+            stmt.close();   
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+===========================================
+import java.sql.*;
+import java.sql.SQLException;
+
+public class Test2{
+
+   public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            Statement stmt = conn.createStatement();
+            System.out.println("MS-SQL 서버 접속에 성공하였습니다.");
+            
+            stmt.executeUpdate("insert into instructor values('77987', 'Kim', 'Physics', 98000)"); 
+            
+            stmt.close();   
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+===========================================
+import java.sql.*;
+import java.sql.SQLException;
+
+public class Test2{
+
+   public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            PreparedStatement pStmt = conn.prepareStatement("insert into instructor values(?,?,?,?)"); 
+            pStmt.setString(1, "88877"); 
+            pStmt.setString(2, "Perry"); 
+            pStmt.setString(3, "Finance"); 
+            pStmt.setInt(4, 125000); 
+            pStmt.executeUpdate(); 
+          
+            pStmt.close();   
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+===============================================
+import java.sql.*;
+import java.sql.SQLException;
+
+public class Test2{
+
+   public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            Statement stmt = conn.createStatement();
+            ResultSet rs= stmt.executeQuery("select * from instructor where id > 70000"); 
+            ResultSetMetaData rsmd= rs.getMetaData(); 
+            for(int i= 1; i<= rsmd.getColumnCount(); i++) { 
+            	System.out.print(rsmd.getColumnName(i) + "\t"); 
+            	System.out.println(rsmd.getColumnTypeName(i)); 
+            } 
+
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+=================================================
+import java.sql.*;
+import java.sql.SQLException;
+
+public class Test2{
+
+   public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionUrl = "jdbc:sqlserver://localhost:49681;database=largeDB;integratedSecurity=true";
+            Connection conn = DriverManager.getConnection(connectionUrl);
+            DatabaseMetaData dbmd = conn.getMetaData(); 
+            ResultSet rs = dbmd.getColumns(null, null, "department", "%"); 
+            while(rs.next()) { 
+            	System.out.print(rs.getString("COLUMN_NAME") + "\t"); 
+            	System.out.println(rs.getString("TYPE_NAME")); 
+            } 
+            
+            conn.close();
+        } catch (ClassNotFoundException sqle) {
+        	System.out.println("SQLException : " + sqle);
+        }
+   }
+
+}
+====================================================
+
+
+
+
+
+

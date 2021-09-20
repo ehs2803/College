@@ -1,0 +1,41 @@
+abstract class Figure{
+	abstract void area();
+	abstract void girth();
+	abstract void draw();
+}
+
+class Rect extends Figure{
+	public void area() {
+		System.out.println("Rect area");
+	}
+	public void girth() {
+		System.out.println("Rect Girth");
+	}
+	public void draw() {
+		System.out.println("Rect draw");
+	}
+}
+
+class Circle extends Figure{
+	public void area() {
+		System.out.println("Circle Rect");
+	}
+	public void girth() {
+		System.out.println("Circle Girth");
+	}
+	public void draw() {
+		System.out.println("Circle draw");
+	}
+}
+
+public class prob3 {
+	static void print(Figure f) {
+		f.area();
+		f.girth();
+		f.draw();
+	}
+	public static void main(String[] args) {
+		print(new Rect());
+		print(new Circle());
+	}
+}
