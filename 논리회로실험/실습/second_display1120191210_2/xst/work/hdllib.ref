@@ -1,0 +1,11 @@
+MO h_10 NULL h_10.v vlg34/h__10.bin 1575880560
+MO bcd_to_seg_mod NULL bcd_to_seg_mod.v vlg20/bcd__to__seg__mod.bin 1575974122
+MO second_two_digits NULL second_two_digits.v vlg18/second__two__digits.bin 1575974122
+MO second_1 NULL second_1.v vlg48/second__1.bin 1575974122
+MO hour NULL hour.v vlg5A/hour.bin 1575974122
+MO bcd_counter NULL bcd_counter.v vlg08/bcd__counter.bin 1575974122
+MO cnt_2 NULL cnt_2.v vlg4A/cnt__2.bin 1575974122
+MO couter10 NULL couter10.v vlg53/couter10.bin 1575974122
+MO second_10 NULL second_10.v vlg18/second__10.bin 1575974122
+MO mod_6_counter NULL mod_6_counter.v vlg48/mod__6__counter.bin 1575974122
+MO freq_div_N NULL freq_div_N.v vlg6D/freq__div___n.bin 1575974122

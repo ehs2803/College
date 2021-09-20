@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\logic\my_buf_1\buf_gate.ncd
+OUTFILE=D:\logic\my_buf_1\buf_gate.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=D:\logic\my_buf_1
+LICENSE=WebPack
+USER_INFO=__0_0_0

@@ -1,0 +1,11 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Mon Dec 02 15:56:17 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "mclk_out" LOCATE = SITE "AB7" LEVEL 1;
+COMP "mclk" LOCATE = SITE "A13" LEVEL 1;
+COMP "clk_1hz" LOCATE = SITE "AE6" LEVEL 1;
+COMP "rst" LOCATE = SITE "AD10" LEVEL 1;
+SCHEMATIC END;
+

@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7
+# Build 321239 by xbuild on Fri Sep 27 19:31:35 MDT 2013
+# Start of session at: Mon Oct 28 16:45:53 2019
+# Process ID: 8316
+# Log file: D:/logic/my_buf_1/planAhead_run_1/planAhead.log
+# Journal file: D:/logic/my_buf_1/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source D:/logic/my_buf_1/pa.fromHdl.tcl
+update_compile_order -fileset sim_1
+set_property package_pin "" [get_ports [list  out]]
+startgroup
+set_property package_pin AB7 [get_ports out]
+endgroup
+set_property package_pin "" [get_ports [list  control]]
+startgroup
+set_property package_pin AD10 [get_ports data]
+endgroup
+startgroup
+set_property package_pin AC10 [get_ports control]
+endgroup
+startgroup
+set_property package_pin AB7 [get_ports out]
+endgroup
+save_constraints

@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "D:/logic-20191125/bitcounter/bitcounter8.xst" -ofn "D:/logic-20191125/bitcounter/bitcounter8.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc bitcounter8.ucf -p xc3s1000-fg676-5 bitcounter8.ngc bitcounter8.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o bitcounter8_map.ncd bitcounter8.ngd bitcounter8.pcf 
+par -w -intstyle ise -ol high -t 1 bitcounter8_map.ncd bitcounter8.ncd bitcounter8.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml bitcounter8.twx bitcounter8.ncd -o bitcounter8.twr bitcounter8.pcf -ucf bitcounter8.ucf 
+bitgen -intstyle ise -f bitcounter8.ut bitcounter8.ncd 

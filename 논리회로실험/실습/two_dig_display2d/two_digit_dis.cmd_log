@@ -1,0 +1,104 @@
+xst -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -intstyle ise -ifn two_digit_dis.xst -ofn two_digit_dis.syr
+xst -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -intstyle ise -ifn two_digit_dis.xst -ofn two_digit_dis.syr
+ngdbuild -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -intstyle ise -dd _ngo -nt timestamp -uc "two_digit_dis.ucf" -p xc3s1000-fg676-4 "two_digit_dis.ngc" two_digit_dis.ngd
+map -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -intstyle ise -p xc3s1000-fg676-4 -cm area -pr b -k 4 -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf
+par -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -w -intstyle ise -ol std -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf
+trce -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -intstyle ise -e 3 -s 4 -xml two_digit_dis two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf
+bitgen -ise "D:/temp/two_dig_display2/two_dig_display2.ise" -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 
+xst -intstyle ise -ifn "D:/two_dig_display2/two_digit_dis.xst" -ofn "D:/two_dig_display2/two_digit_dis.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 two_digit_dis.ngc two_digit_dis.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o two_digit_dis_map.ncd two_digit_dis.ngd two_digit_dis.pcf 
+par -w -intstyle ise -ol high -t 1 two_digit_dis_map.ncd two_digit_dis.ncd two_digit_dis.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml two_digit_dis.twx two_digit_dis.ncd -o two_digit_dis.twr two_digit_dis.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f two_digit_dis.ut two_digit_dis.ncd 

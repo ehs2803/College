@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\logic\abc\aefde.ncd
+OUTFILE=D:\logic\abc\aefde.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=D:\logic\abc
+LICENSE=WebPack
+USER_INFO=__0_0_0

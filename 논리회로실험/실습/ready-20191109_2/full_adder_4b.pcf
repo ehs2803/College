@@ -1,0 +1,20 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Sat Nov 09 19:59:34 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "c7" LOCATE = SITE "AC7" LEVEL 1;
+COMP "sum<0>" LOCATE = SITE "AE6" LEVEL 1;
+COMP "sum<1>" LOCATE = SITE "AF6" LEVEL 1;
+COMP "sum<2>" LOCATE = SITE "AC6" LEVEL 1;
+COMP "sum<3>" LOCATE = SITE "AD6" LEVEL 1;
+COMP "a<0>" LOCATE = SITE "Y16" LEVEL 1;
+COMP "a<1>" LOCATE = SITE "AB15" LEVEL 1;
+COMP "a<2>" LOCATE = SITE "AA15" LEVEL 1;
+COMP "a<3>" LOCATE = SITE "AE15" LEVEL 1;
+COMP "b<0>" LOCATE = SITE "AB14" LEVEL 1;
+COMP "b<1>" LOCATE = SITE "AF12" LEVEL 1;
+COMP "b<2>" LOCATE = SITE "AE12" LEVEL 1;
+COMP "b<3>" LOCATE = SITE "Y13" LEVEL 1;
+SCHEMATIC END;
+

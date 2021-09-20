@@ -1,0 +1,12 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Mon Nov 11 16:25:17 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "cin" LOCATE = SITE "AA9" LEVEL 1;
+COMP "sum<0>" LOCATE = SITE "AE6" LEVEL 1;
+COMP "a<0>" LOCATE = SITE "AD10" LEVEL 1;
+COMP "cout" LOCATE = SITE "AF6" LEVEL 1;
+COMP "b<0>" LOCATE = SITE "AC10" LEVEL 1;
+SCHEMATIC END;
+

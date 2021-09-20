@@ -1,0 +1,24 @@
+# begin LFP file D:\temp\second_display\two_digit_dis.lfp
+designfile second_two_digits.v
+parttype xc3s1000-4-fg676
+bus_delimiter 1;
+set_busdelim_onsave 1;
+IO_GROUP "seg_com" IO_GROUP="second_two_digits" ;
+IO_GROUP "seg_data" IO_GROUP="second_two_digits" ;
+INST "second_two_digits" COLOR=15  ;
+NET "seg_com[7]" IO_GROUP="seg_com"  ;
+NET "seg_com[6]" IO_GROUP="seg_com"  ;
+NET "seg_com[5]" IO_GROUP="seg_com"  ;
+NET "seg_com[4]" IO_GROUP="seg_com"  ;
+NET "seg_com[3]" IO_GROUP="seg_com"  ;
+NET "seg_com[2]" IO_GROUP="seg_com"  ;
+NET "seg_com[1]" IO_GROUP="seg_com"  ;
+NET "seg_com[0]" IO_GROUP="seg_com"  ;
+NET "seg_data[7]" IO_GROUP="seg_data"  ;
+NET "seg_data[6]" IO_GROUP="seg_data"  ;
+NET "seg_data[5]" IO_GROUP="seg_data"  ;
+NET "seg_data[4]" IO_GROUP="seg_data"  ;
+NET "seg_data[3]" IO_GROUP="seg_data"  ;
+NET "seg_data[2]" IO_GROUP="seg_data"  ;
+NET "seg_data[1]" IO_GROUP="seg_data"  ;
+NET "seg_data[0]" IO_GROUP="seg_data"  ;

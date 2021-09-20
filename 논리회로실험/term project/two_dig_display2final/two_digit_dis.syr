@@ -1,0 +1,523 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Reading design: two_digit_dis.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "two_digit_dis.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "two_digit_dis"
+Output Format                      : NGC
+Target Device                      : xc3s1000-4-fg676
+
+---- Source Options
+Top Module Name                    : two_digit_dis
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "mod_6_counter.v" in library work
+Compiling verilog file "bunju.v" in library work
+Module <mod_6_counter> compiled
+Compiling verilog file "bcd_to_seg_mod.v" in library work
+Module <bunju> compiled
+Compiling verilog file "bcd_counter.v" in library work
+Module <bcd_to_seg_mod> compiled
+Compiling verilog file "two_digit_dis.v" in library work
+Module <bcd_counter> compiled
+Module <two_digit_dis> compiled
+No errors in compilation
+Analysis of file <"two_digit_dis.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <two_digit_dis> in library <work>.
+
+Analyzing hierarchy for module <bunju> in library <work>.
+
+Analyzing hierarchy for module <bcd_counter> in library <work>.
+
+Analyzing hierarchy for module <mod_6_counter> in library <work>.
+
+Analyzing hierarchy for module <bcd_to_seg_mod> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <two_digit_dis>.
+Module <two_digit_dis> is correct for synthesis.
+ 
+Analyzing module <bunju> in library <work>.
+Module <bunju> is correct for synthesis.
+ 
+Analyzing module <bcd_counter> in library <work>.
+Module <bcd_counter> is correct for synthesis.
+ 
+Analyzing module <mod_6_counter> in library <work>.
+Module <mod_6_counter> is correct for synthesis.
+ 
+Analyzing module <bcd_to_seg_mod> in library <work>.
+Module <bcd_to_seg_mod> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <bunju>.
+    Related source file is "bunju.v".
+    Found 1-bit register for signal <clk_out>.
+    Found 3-bit up counter for signal <cnt>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <bunju> synthesized.
+
+
+Synthesizing Unit <bcd_counter>.
+    Related source file is "bcd_counter.v".
+    Found 4-bit up counter for signal <cnt>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <bcd_counter> synthesized.
+
+
+Synthesizing Unit <mod_6_counter>.
+    Related source file is "mod_6_counter.v".
+    Found 3-bit up counter for signal <cnt>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <mod_6_counter> synthesized.
+
+
+Synthesizing Unit <bcd_to_seg_mod>.
+    Related source file is "bcd_to_seg_mod.v".
+    Found 16x8-bit ROM for signal <seg_data>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <bcd_to_seg_mod> synthesized.
+
+
+Synthesizing Unit <two_digit_dis>.
+    Related source file is "two_digit_dis.v".
+    Found 8-bit register for signal <seg_com>.
+    Found 8-bit register for signal <seg_data>.
+    Found 1-bit register for signal <ten_or_one>.
+    Summary:
+	inferred  17 D-type flip-flop(s).
+Unit <two_digit_dis> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 2
+ 16x8-bit ROM                                          : 2
+# Counters                                             : 6
+ 3-bit up counter                                      : 5
+ 4-bit up counter                                      : 1
+# Registers                                            : 7
+ 1-bit register                                        : 5
+ 8-bit register                                        : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1710 - FF/Latch <seg_com_0> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_1> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_2> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_3> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_4> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_5> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 2
+ 16x8-bit ROM                                          : 2
+# Counters                                             : 6
+ 3-bit up counter                                      : 5
+ 4-bit up counter                                      : 1
+# Registers                                            : 21
+ Flip-Flops                                            : 21
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <seg_com_0> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_1> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_2> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_3> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_4> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <seg_com_5> (without init value) has a constant value of 1 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <seg_data_7> (without init value) has a constant value of 0 in block <two_digit_dis>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <two_digit_dis> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+INFO:Xst:2261 - The FF/Latch <ten_or_one> in Unit <two_digit_dis> is equivalent to the following FF/Latch, which will be removed : <seg_com_6> 
+Found area constraint ratio of 100 (+ 5) on block two_digit_dis, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 32
+ Flip-Flops                                            : 32
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : two_digit_dis.ngr
+Top Level Output File Name         : two_digit_dis
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 18
+
+Cell Usage :
+# BELS                             : 50
+#      GND                         : 1
+#      INV                         : 6
+#      LUT2                        : 5
+#      LUT3                        : 21
+#      LUT4                        : 10
+#      MUXF5                       : 6
+#      VCC                         : 1
+# FlipFlops/Latches                : 32
+#      FD                          : 7
+#      FDC                         : 19
+#      FDPE                        : 4
+#      FDR                         : 1
+#      FDS                         : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 17
+#      IBUF                        : 1
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000fg676-4 
+
+ Number of Slices:                       21  out of   7680     0%  
+ Number of Slice Flip Flops:             32  out of  15360     0%  
+ Number of 4 input LUTs:                 42  out of  15360     0%  
+ Number of IOs:                          18
+ Number of bonded IOBs:                  18  out of    391     4%  
+ Number of GCLKs:                         1  out of      8    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 13    |
+B2/clk_out                         | NONE(B3/clk_out)       | 8     |
+B1/clk_out                         | NONE(B2/clk_out)       | 4     |
+B0/clk_out                         | NONE(B1/clk_out)       | 4     |
+B3/clk_out                         | NONE(U1/cnt_0)         | 3     |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst                                | IBUF                   | 23    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 4.334ns (Maximum Frequency: 230.734MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 7.498ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.334ns (frequency: 230.734MHz)
+  Total number of paths / destination ports: 22 / 15
+-------------------------------------------------------------------------
+Delay:               4.334ns (Levels of Logic = 1)
+  Source:            ten_or_one (FF)
+  Destination:       seg_data_3 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: ten_or_one to seg_data_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             10   0.720   1.160  ten_or_one (ten_or_one)
+     LUT4:I3->O            2   0.551   0.877  seg_data_mux0000<4> (seg_data_mux0000<4>)
+     FDS:S                     1.026          seg_data_3
+    ----------------------------------------
+    Total                      4.334ns (2.297ns logic, 2.037ns route)
+                                       (53.0% logic, 47.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'B2/clk_out'
+  Clock period: 3.930ns (frequency: 254.453MHz)
+  Total number of paths / destination ports: 24 / 9
+-------------------------------------------------------------------------
+Delay:               3.930ns (Levels of Logic = 1)
+  Source:            B3/cnt_0 (FF)
+  Destination:       B3/clk_out (FF)
+  Source Clock:      B2/clk_out rising
+  Destination Clock: B2/clk_out rising
+
+  Data Path: B3/cnt_0 to B3/clk_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              4   0.720   1.256  B3/cnt_0 (B3/cnt_0)
+     LUT3:I0->O            1   0.551   0.801  B3/cnt_cmp_eq00001 (B3/cnt_cmp_eq0000)
+     FDPE:CE                   0.602          B3/clk_out
+    ----------------------------------------
+    Total                      3.930ns (1.873ns logic, 2.057ns route)
+                                       (47.7% logic, 52.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'B1/clk_out'
+  Clock period: 3.930ns (frequency: 254.453MHz)
+  Total number of paths / destination ports: 12 / 5
+-------------------------------------------------------------------------
+Delay:               3.930ns (Levels of Logic = 1)
+  Source:            B2/cnt_0 (FF)
+  Destination:       B2/clk_out (FF)
+  Source Clock:      B1/clk_out rising
+  Destination Clock: B1/clk_out rising
+
+  Data Path: B2/cnt_0 to B2/clk_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              4   0.720   1.256  B2/cnt_0 (B2/cnt_0)
+     LUT3:I0->O            1   0.551   0.801  B2/cnt_cmp_eq00001 (B2/cnt_cmp_eq0000)
+     FDPE:CE                   0.602          B2/clk_out
+    ----------------------------------------
+    Total                      3.930ns (1.873ns logic, 2.057ns route)
+                                       (47.7% logic, 52.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'B0/clk_out'
+  Clock period: 3.930ns (frequency: 254.453MHz)
+  Total number of paths / destination ports: 12 / 5
+-------------------------------------------------------------------------
+Delay:               3.930ns (Levels of Logic = 1)
+  Source:            B1/cnt_0 (FF)
+  Destination:       B1/clk_out (FF)
+  Source Clock:      B0/clk_out rising
+  Destination Clock: B0/clk_out rising
+
+  Data Path: B1/cnt_0 to B1/clk_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              4   0.720   1.256  B1/cnt_0 (B1/cnt_0)
+     LUT3:I0->O            1   0.551   0.801  B1/cnt_cmp_eq00001 (B1/cnt_cmp_eq0000)
+     FDPE:CE                   0.602          B1/clk_out
+    ----------------------------------------
+    Total                      3.930ns (1.873ns logic, 2.057ns route)
+                                       (47.7% logic, 52.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'B3/clk_out'
+  Clock period: 3.409ns (frequency: 293.341MHz)
+  Total number of paths / destination ports: 7 / 3
+-------------------------------------------------------------------------
+Delay:               3.409ns (Levels of Logic = 1)
+  Source:            U1/cnt_0 (FF)
+  Destination:       U1/cnt_0 (FF)
+  Source Clock:      B3/clk_out rising
+  Destination Clock: B3/clk_out rising
+
+  Data Path: U1/cnt_0 to U1/cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             10   0.720   1.134  U1/cnt_0 (U1/cnt_0)
+     INV:I->O              1   0.551   0.801  U1/Mcount_cnt_xor<0>11_INV_0 (U1/Mcount_cnt)
+     FDC:D                     0.203          U1/cnt_0
+    ----------------------------------------
+    Total                      3.409ns (1.474ns logic, 1.935ns route)
+                                       (43.2% logic, 56.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 9 / 9
+-------------------------------------------------------------------------
+Offset:              7.498ns (Levels of Logic = 1)
+  Source:            ten_or_one (FF)
+  Destination:       seg_com<6> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: ten_or_one to seg_com<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             10   0.720   1.134  ten_or_one (ten_or_one)
+     OBUF:I->O                 5.644          seg_com_6_OBUF (seg_com<6>)
+    ----------------------------------------
+    Total                      7.498ns (6.364ns logic, 1.134ns route)
+                                       (84.9% logic, 15.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.85 secs
+ 
+--> 
+
+Total memory usage is 4506392 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   14 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

@@ -1,0 +1,5 @@
+set -tmpdir "C:/LOGIC/ready-20191109_2/xst/projnav.tmp"
+set -xsthdpdir "C:/LOGIC/ready-20191109_2/xst"
+elaborate
+-ifn full_adder_4b.prj
+-ifmt mixed

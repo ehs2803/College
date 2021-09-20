@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/logic/bcdto7_seg/bcd_seg_dec.xst" -ofn "C:/logic/bcdto7_seg/bcd_seg_dec.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc bcd_seg_dec.ucf -p xc3s1000-fg676-5 bcd_seg_dec.ngc bcd_seg_dec.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o bcd_seg_dec_map.ncd bcd_seg_dec.ngd bcd_seg_dec.pcf 
+par -w -intstyle ise -ol high -t 1 bcd_seg_dec_map.ncd bcd_seg_dec.ncd bcd_seg_dec.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml bcd_seg_dec.twx bcd_seg_dec.ncd -o bcd_seg_dec.twr bcd_seg_dec.pcf -ucf bcd_seg_dec.ucf 
+bitgen -intstyle ise -f bcd_seg_dec.ut bcd_seg_dec.ncd 

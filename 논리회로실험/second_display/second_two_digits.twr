@@ -1,0 +1,69 @@
+--------------------------------------------------------------------------------
+Release 9.2i Trace 
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx92i\bin\nt\trce.exe -ise D:/temp/second_display/sec_display.ise
+-intstyle ise -e 3 -s 4 -xml second_two_digits second_two_digits.ncd -o
+second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf
+
+Design file:              second_two_digits.ncd
+Physical constraint file: second_two_digits.pcf
+Device,package,speed:     xc3s1000,fg676,-4 (PRODUCTION 1.39 2007-04-13)
+Report level:             error report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+seg_com<6>  |   10.861(R)|clk_BUFGP         |   0.000|
+seg_com<7>  |    7.284(R)|clk_BUFGP         |   0.000|
+seg_data<0> |    7.288(R)|clk_BUFGP         |   0.000|
+seg_data<1> |    7.288(R)|clk_BUFGP         |   0.000|
+seg_data<2> |    7.296(R)|clk_BUFGP         |   0.000|
+seg_data<3> |    7.296(R)|clk_BUFGP         |   0.000|
+seg_data<4> |    7.384(R)|clk_BUFGP         |   0.000|
+seg_data<5> |    7.384(R)|clk_BUFGP         |   0.000|
+seg_data<6> |    7.289(R)|clk_BUFGP         |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    8.467|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Tue Nov 22 00:42:45 2011 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 88 MB
+
+
+

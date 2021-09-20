@@ -1,0 +1,23 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "seg_data[0]" LOC = AF5;
+NET "seg_data[1]" LOC = AE5;
+NET "seg_data[2]" LOC = AB6;
+NET "seg_data[3]" LOC = AA6;
+NET "seg_data[4]" LOC = K26;
+NET "seg_data[5]" LOC = K25;
+NET "seg_data[6]" LOC = AC2;
+NET "seg_data[7]" LOC = AC1;
+NET "seg_com[0]" LOC = W4;
+NET "seg_com[1]" LOC = W5;
+NET "seg_com[2]" LOC = W6;
+NET "seg_com[3]" LOC = AB3;
+NET "seg_com[4]" LOC = AB4;
+NET "seg_com[5]" LOC = W1;
+NET "seg_com[6]" LOC = W2;
+NET "seg_com[7]" LOC = AD2;
+NET "bcd_in[0]" LOC = Y16;
+NET "bcd_in[3]" LOC = AE15;
+NET "bcd_in[2]" LOC = AA15;
+NET "bcd_in[1]" LOC = AB15;

@@ -1,0 +1,9 @@
+xst -intstyle ise -ifn "D:/logic-20191202/bujugi/bunju.xst" -ofn "D:/logic-20191202/bujugi/bunju.syr" 
+xst -intstyle ise -ifn "D:/logic-20191202/bujugi/bunju.xst" -ofn "D:/logic-20191202/bujugi/bunju.syr" 
+xst -intstyle ise -ifn "D:/logic-20191202/bujugi/bunju.xst" -ofn "D:/logic-20191202/bujugi/bunju.syr" 
+xst -intstyle ise -ifn "D:/logic-20191202/bujugi/bunju.xst" -ofn "D:/logic-20191202/bujugi/bunju.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc bunju.ucf -p xc3s1000-fg676-5 bunju.ngc bunju.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o bunju_map.ncd bunju.ngd bunju.pcf 
+par -w -intstyle ise -ol high -t 1 bunju_map.ncd bunju.ncd bunju.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml bunju.twx bunju.ncd -o bunju.twr bunju.pcf -ucf bunju.ucf 
+bitgen -intstyle ise -f bunju.ut bunju.ncd 

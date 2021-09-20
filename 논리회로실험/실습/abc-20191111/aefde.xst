@@ -1,0 +1,5 @@
+set -tmpdir "D:/logic/abc/xst/projnav.tmp"
+set -xsthdpdir "D:/logic/abc/xst"
+elaborate
+-ifn aefde.prj
+-ifmt mixed

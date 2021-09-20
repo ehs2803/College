@@ -1,0 +1,26 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "out[0]" LOC = AE6;
+NET "out[1]" LOC = AF6;
+NET "out[2]" LOC = AC6;
+NET "out[3]" LOC = AD6;
+NET "sel[1]" LOC = AD10;
+NET "enable" LOC = AA9;
+NET "sel[0]" LOC = AC10;
+NET "b[0]" LOC = Y16;
+NET "b[1]" LOC = AB15;
+NET "b[2]" LOC = AA15;
+NET "b[3]" LOC = AE15;
+NET "a[0]" LOC = AD15;
+NET "a[1]" LOC = AF13;
+NET "a[2]" LOC = AA13;
+NET "a[3]" LOC = W15;
+NET "d[0]" LOC = AB14;
+NET "d[1]" LOC = AF12;
+NET "d[2]" LOC = AE12;
+NET "d[3]" LOC = Y13;
+NET "c[0]" LOC = W13;
+NET "c[1]" LOC = W12;
+NET "c[2]" LOC = AC11;
+NET "c[3]" LOC = AD12;

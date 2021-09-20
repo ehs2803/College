@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "D:/logic1/half_adder/myhalf_adder.xst" -ofn "D:/logic1/half_adder/myhalf_adder.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc myhalf_adder.ucf -p xc3s1000-fg676-5 myhalf_adder.ngc myhalf_adder.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o myhalf_adder_map.ncd myhalf_adder.ngd myhalf_adder.pcf 
+par -w -intstyle ise -ol high -t 1 myhalf_adder_map.ncd myhalf_adder.ncd myhalf_adder.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml myhalf_adder.twx myhalf_adder.ncd -o myhalf_adder.twr myhalf_adder.pcf -ucf myhalf_adder.ucf 
+bitgen -intstyle ise -f myhalf_adder.ut myhalf_adder.ncd 

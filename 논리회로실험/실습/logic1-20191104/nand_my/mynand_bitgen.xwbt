@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\logic1\nand_my\mynand.ncd
+OUTFILE=D:\logic1\nand_my\mynand.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=D:\logic1\nand_my
+LICENSE=WebPack
+USER_INFO=__0_0_0

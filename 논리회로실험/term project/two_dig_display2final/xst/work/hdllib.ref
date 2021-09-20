@@ -1,0 +1,5 @@
+MO two_digit_dis NULL two_digit_dis.v vlg71/two__digit__dis.bin 1575470302
+MO bcd_to_seg_mod NULL bcd_to_seg_mod.v vlg20/bcd__to__seg__mod.bin 1575470302
+MO bcd_counter NULL bcd_counter.v vlg08/bcd__counter.bin 1575470302
+MO bunju NULL bunju.v vlg28/bunju.bin 1575470302
+MO mod_6_counter NULL mod_6_counter.v vlg48/mod__6__counter.bin 1575470302

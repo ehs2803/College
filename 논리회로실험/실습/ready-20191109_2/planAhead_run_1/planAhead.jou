@@ -1,0 +1,54 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Sat Nov 09 19:50:10 2019
+# Process ID: 1696
+# Log file: C:/LOGIC/ready-20191109_2/planAhead_run_1/planAhead.log
+# Journal file: C:/LOGIC/ready-20191109_2/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source C:/LOGIC/ready-20191109_2/pa.fromHdl.tcl
+update_compile_order -fileset sim_1
+startgroup
+set_property package_pin AC7 [get_ports c7]
+endgroup
+startgroup
+set_property package_pin AE6 [get_ports {sum[0]}]
+endgroup
+startgroup
+set_property package_pin AF6 [get_ports {sum[1]}]
+endgroup
+startgroup
+set_property package_pin AC6 [get_ports {sum[2]}]
+endgroup
+startgroup
+set_property package_pin AD6 [get_ports {sum[3]}]
+endgroup
+startgroup
+set_property package_pin Y16 [get_ports {a[0]}]
+endgroup
+startgroup
+set_property package_pin AB15 [get_ports {a[1]}]
+endgroup
+startgroup
+set_property package_pin AA15 [get_ports {a[2]}]
+endgroup
+startgroup
+set_property package_pin AE15 [get_ports {a[3]}]
+endgroup
+startgroup
+set_property package_pin AB14 [get_ports {b[0]}]
+endgroup
+startgroup
+set_property package_pin AF12 [get_ports {b[1]}]
+endgroup
+startgroup
+set_property package_pin AE12 [get_ports {b[2]}]
+endgroup
+startgroup
+set_property package_pin Y13 [get_ports {b[3]}]
+endgroup
+startgroup
+set_property package_pin AE12 [get_ports {b[2]}]
+endgroup
+save_constraints

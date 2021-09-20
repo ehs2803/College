@@ -1,0 +1,89 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7
+# Build 321239 by xbuild on Fri Sep 27 19:31:35 MDT 2013
+# Start of session at: Mon Nov 04 15:14:11 2019
+# Process ID: 8152
+# Log file: D:/logic1/nand_my/planAhead_run_1/planAhead.log
+# Journal file: D:/logic1/nand_my/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source D:/logic1/nand_my/pa.fromHdl.tcl
+update_compile_order -fileset sim_1
+set_property package_pin "" [get_ports [list  {y[7]}]]
+set_property package_pin "" [get_ports [list  {y[6]}]]
+startgroup
+set_property package_pin AB7 [get_ports {y[7]}]
+endgroup
+startgroup
+set_property package_pin AA7 [get_ports {y[6]}]
+endgroup
+startgroup
+set_property package_pin AF7 [get_ports {y[5]}]
+endgroup
+startgroup
+set_property package_pin AC7 [get_ports {y[4]}]
+endgroup
+startgroup
+set_property package_pin AD6 [get_ports {y[3]}]
+endgroup
+startgroup
+set_property package_pin AC6 [get_ports {y[2]}]
+endgroup
+startgroup
+set_property package_pin AF6 [get_ports {y[1]}]
+endgroup
+startgroup
+set_property package_pin AE6 [get_ports {y[0]}]
+endgroup
+startgroup
+set_property package_pin Y16 [get_ports {a[7]}]
+endgroup
+startgroup
+set_property package_pin AB15 [get_ports {a[6]}]
+endgroup
+startgroup
+set_property package_pin AA15 [get_ports {a[5]}]
+endgroup
+startgroup
+set_property package_pin AE15 [get_ports {a[4]}]
+endgroup
+startgroup
+set_property package_pin AD15 [get_ports {a[3]}]
+endgroup
+startgroup
+set_property package_pin AF13 [get_ports {a[2]}]
+endgroup
+startgroup
+set_property package_pin AA13 [get_ports {a[1]}]
+endgroup
+startgroup
+set_property package_pin W15 [get_ports {a[0]}]
+endgroup
+startgroup
+set_property package_pin AB14 [get_ports {b[7]}]
+endgroup
+startgroup
+set_property package_pin AF12 [get_ports {b[6]}]
+endgroup
+startgroup
+set_property package_pin AE12 [get_ports {b[5]}]
+endgroup
+startgroup
+set_property package_pin Y13 [get_ports {b[4]}]
+endgroup
+startgroup
+set_property package_pin W13 [get_ports {b[3]}]
+endgroup
+startgroup
+set_property package_pin W12 [get_ports {b[2]}]
+endgroup
+startgroup
+set_property package_pin AC11 [get_ports {b[1]}]
+endgroup
+startgroup
+set_property package_pin AD12 [get_ports {b[0]}]
+endgroup
+startgroup
+set_property package_pin AC11 [get_ports {b[1]}]
+endgroup
+save_constraints

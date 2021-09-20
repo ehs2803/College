@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "D:/logic1/my_adder/full_adder_4bit.xst" -ofn "D:/logic1/my_adder/full_adder_4bit.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc myhalf_adder.ucf -p xc3s1000-fg676-5 full_adder_4bit.ngc full_adder_4bit.ngd  
+xst -intstyle ise -ifn "D:/logic1/my_adder/full_adder_4bit.xst" -ofn "D:/logic1/my_adder/full_adder_4bit.syr" 

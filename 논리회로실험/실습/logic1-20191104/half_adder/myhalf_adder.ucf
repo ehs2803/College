@@ -1,0 +1,10 @@
+
+
+NET "a" LOC = AD10;
+NET "b" LOC = AC10;
+NET "cout" LOC = AF6;
+NET "sum" LOC = AE6;
+
+# PlanAhead Generated physical constraints 
+
+NET "cin" LOC = AA9;

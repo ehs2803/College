@@ -1,0 +1,10 @@
+xst -intstyle ise -ifn "D:/logic/abc/add6bit.xst" -ofn "D:/logic/abc/add6bit.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc aefde.ucf -p xc3s1000-fg676-5 add6bit.ngc add6bit.ngd  
+xst -intstyle ise -ifn "D:/logic/abc/add6bit.xst" -ofn "D:/logic/abc/add6bit.syr" 
+xst -intstyle ise -ifn "D:/logic/abc/add6bit.xst" -ofn "D:/logic/abc/add6bit.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc aefde.ucf -p xc3s1000-fg676-5 add6bit.ngc add6bit.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o add6bit_map.ncd add6bit.ngd add6bit.pcf 
+par -w -intstyle ise -ol high -t 1 add6bit_map.ncd add6bit.ncd add6bit.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml add6bit.twx add6bit.ncd -o add6bit.twr add6bit.pcf -ucf aefde.ucf 
+bitgen -intstyle ise -f add6bit.ut add6bit.ncd 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim add6bit.ngc add6bit_synthesis.v 

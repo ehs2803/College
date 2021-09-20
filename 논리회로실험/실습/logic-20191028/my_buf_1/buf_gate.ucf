@@ -1,0 +1,6 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "data" LOC = AD10;
+NET "control" LOC = AC10;
+NET "out" LOC = AB7;

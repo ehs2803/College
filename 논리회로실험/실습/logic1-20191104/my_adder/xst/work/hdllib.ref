@@ -1,0 +1,3 @@
+MO full_adder_1b NULL full_adder.v vlg10/full__adder__1b.bin 1572856723
+MO myhalf_adder NULL half_adder.v vlg24/myhalf__adder.bin 1572856723
+MO full_adder_4bit NULL full_adder_4bit.v vlg08/full__adder__4bit.bin 1572856507

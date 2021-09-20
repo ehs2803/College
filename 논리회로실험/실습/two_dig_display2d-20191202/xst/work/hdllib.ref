@@ -1,0 +1,6 @@
+MO two_digit_dis NULL two_digit_dis.v vlg71/two__digit__dis.bin 1575276297
+MO bcd_to_seg_mod NULL bcd_to_seg_mod.v vlg20/bcd__to__seg__mod.bin 1575276297
+MO frq_six NULL frq_six.v vlg34/frq__six.bin 1575276297
+MO bcd_counter NULL bcd_counter.v vlg08/bcd__counter.bin 1575276297
+MO frq_div10 NULL frq_div10.v vlg68/frq__div10.bin 1575276297
+MO mod_6_counter NULL mod_6_counter.v vlg48/mod__6__counter.bin 1575276297

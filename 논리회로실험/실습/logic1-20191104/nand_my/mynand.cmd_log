@@ -1,0 +1,16 @@
+xst -intstyle ise -ifn "D:/logic1/nand_my/mynand.xst" -ofn "D:/logic1/nand_my/mynand.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc mynand.ucf -p xc3s1000-fg676-5 mynand.ngc mynand.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o mynand_map.ncd mynand.ngd mynand.pcf 
+par -w -intstyle ise -ol high -t 1 mynand_map.ncd mynand.ncd mynand.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml mynand.twx mynand.ncd -o mynand.twr mynand.pcf -ucf mynand.ucf 
+bitgen -intstyle ise -f mynand.ut mynand.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc mynand.ucf -p xc3s1000-fg676-5 mynand.ngc mynand.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o mynand_map.ncd mynand.ngd mynand.pcf 
+par -w -intstyle ise -ol high -t 1 mynand_map.ncd mynand.ncd mynand.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml mynand.twx mynand.ncd -o mynand.twr mynand.pcf -ucf mynand.ucf 
+bitgen -intstyle ise -f mynand.ut mynand.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc mynand.ucf -p xc3s1000-fg676-5 mynand.ngc mynand.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o mynand_map.ncd mynand.ngd mynand.pcf 
+par -w -intstyle ise -ol high -t 1 mynand_map.ncd mynand.ncd mynand.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml mynand.twx mynand.ncd -o mynand.twr mynand.pcf -ucf mynand.ucf 
+bitgen -intstyle ise -f mynand.ut mynand.ncd 

@@ -1,0 +1,13 @@
+xst -intstyle ise -ifn "D:/logic/abc/aefde.xst" -ofn "D:/logic/abc/aefde.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc aefde.ucf -p xc3s1000-fg676-5 aefde.ngc aefde.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o aefde_map.ncd aefde.ngd aefde.pcf 
+par -w -intstyle ise -ol high -t 1 aefde_map.ncd aefde.ncd aefde.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml aefde.twx aefde.ncd -o aefde.twr aefde.pcf -ucf aefde.ucf 
+bitgen -intstyle ise -f aefde.ut aefde.ncd 
+xst -intstyle ise -ifn "D:/logic/abc/aefde.xst" -ofn "D:/logic/abc/aefde.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc aefde.ucf -p xc3s1000-fg676-5 aefde.ngc aefde.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o aefde_map.ncd aefde.ngd aefde.pcf 
+par -w -intstyle ise -ol high -t 1 aefde_map.ncd aefde.ncd aefde.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml aefde.twx aefde.ncd -o aefde.twr aefde.pcf -ucf aefde.ucf 
+bitgen -intstyle ise -f aefde.ut aefde.ncd 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim aefde.ngc aefde_synthesis.v 

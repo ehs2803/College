@@ -1,0 +1,11 @@
+[Inputs]
+cin
+=a[3:0]=
+=b[3:0]=
+[Outputs]
+cout
+=sum[3:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel fulladder4bit
+

@@ -1,0 +1,7 @@
+verilog work "mod_6_counter.v"
+verilog work "freq_div_N.v"
+verilog work "bcd_to_seg_mod.v"
+verilog work "bcd_counter.v"
+verilog work "second_10.v"
+verilog work "second_1.v"
+verilog work "second_two_digits.v"

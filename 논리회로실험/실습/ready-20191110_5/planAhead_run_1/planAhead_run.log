@@ -1,0 +1,103 @@
+
+****** PlanAhead v14.7 (64-bit)
+  **** Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+    ** Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
+
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from D:/xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [D:/xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [D:/xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source C:/LOGIC/ready-20191110_5/pa.fromHdl.tcl
+# create_project -name ready-20191110_5 -dir "C:/LOGIC/ready-20191110_5/planAhead_run_1" -part xc3s1000fg676-5
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
+# set_property target_constrs_file "fulladder4bit.ucf" [current_fileset -constrset]
+Adding file 'C:/LOGIC/ready-20191110_5/fulladder4bit.ucf' to fileset 'constrs_1'
+# set hdlfile [add_files [list {half_adder.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {full_adder.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {fulladder4bit.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set_property top fulladder4bit $srcset
+# add_files [list {fulladder4bit.ucf}] -fileset [get_property constrset [current_run]]
+# open_rtl_design -part xc3s1000fg676-5
+Using Verific elaboration
+Parsing VHDL file "D:/xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Analyzing Verilog file "C:/LOGIC/ready-20191110_5/half_adder.v" into library work
+Analyzing Verilog file "C:/LOGIC/ready-20191110_5/full_adder.v" into library work
+Analyzing Verilog file "C:/LOGIC/ready-20191110_5/fulladder4bit.v" into library work
+INFO: [Designutils 20-910] Reading macro library D:/xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn
+Parsing EDIF File [D:/xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn]
+Finished Parsing EDIF File [D:/xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/hd_int_macros.edn]
+Loading clock regions from D:/xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s1000/ClockRegion.xml
+Loading clock buffers from D:/xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s1000/ClockBuffers.xml
+Loading package from D:/xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s1000/fg676/Package.xml
+Loading io standards from D:/xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from D:/xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/xc3s1000/fg676/SSORules.xml
+Loading list of drcs for the architecture : D:/xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan3/drc.xml
+INFO: [Timing 38-77] Reading timing library D:/xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-5.lib.
+INFO: [Timing 38-34] Done reading timing library D:/xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan3/spartan3/spartan3-5.lib.
+Parsing UCF File [C:/LOGIC/ready-20191110_5/fulladder4bit.ucf]
+Finished Parsing UCF File [C:/LOGIC/ready-20191110_5/fulladder4bit.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: 4b4e6851
+open_rtl_design: Time (s): elapsed = 00:00:08 . Memory (MB): peak = 549.125 ; gain = 123.699
+update_compile_order -fileset sim_1
+startgroup
+set_property package_pin Y16 [get_ports {a[0]}]
+endgroup
+startgroup
+set_property package_pin AA15 [get_ports {a[2]}]
+endgroup
+startgroup
+set_property package_pin AB15 [get_ports {a[1]}]
+endgroup
+startgroup
+set_property package_pin AE15 [get_ports {a[3]}]
+endgroup
+startgroup
+set_property package_pin AB14 [get_ports {b[0]}]
+endgroup
+startgroup
+set_property package_pin AF12 [get_ports {b[1]}]
+endgroup
+startgroup
+set_property package_pin AE12 [get_ports {b[2]}]
+endgroup
+startgroup
+set_property package_pin Y13 [get_ports {b[3]}]
+endgroup
+startgroup
+set_property package_pin AF12 [get_ports {b[1]}]
+endgroup
+startgroup
+set_property package_pin AE6 [get_ports {sum[0]}]
+endgroup
+startgroup
+set_property package_pin AF6 [get_ports {sum[1]}]
+endgroup
+startgroup
+set_property package_pin AC6 [get_ports {sum[2]}]
+endgroup
+startgroup
+set_property package_pin AD6 [get_ports {sum[3]}]
+endgroup
+startgroup
+set_property package_pin AC7 [get_ports cout]
+endgroup
+startgroup
+set_property package_pin AA9 [get_ports cin]
+endgroup
+save_constraints
+exit
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Sun Nov 10 21:09:47 2019...
+INFO: [Common 17-83] Releasing license: PlanAhead

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\second_display1\second_two_digits.ncd
+OUTFILE=D:\second_display1\second_two_digits.bit
+FAMILY=Spartan3
+PART=xc3s1000-4fg676
+WORKINGDIR=D:\second_display1
+LICENSE=WebPack
+USER_INFO=__0_0_0

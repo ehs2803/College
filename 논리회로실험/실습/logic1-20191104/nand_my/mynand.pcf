@@ -1,0 +1,31 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Mon Nov 04 15:29:01 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "y<0>" LOCATE = SITE "AB7" LEVEL 1;
+COMP "y<1>" LOCATE = SITE "AA7" LEVEL 1;
+COMP "y<2>" LOCATE = SITE "AF7" LEVEL 1;
+COMP "y<3>" LOCATE = SITE "AC7" LEVEL 1;
+COMP "y<4>" LOCATE = SITE "AD6" LEVEL 1;
+COMP "y<5>" LOCATE = SITE "AC6" LEVEL 1;
+COMP "a<0>" LOCATE = SITE "W15" LEVEL 1;
+COMP "y<6>" LOCATE = SITE "AF6" LEVEL 1;
+COMP "a<1>" LOCATE = SITE "AA13" LEVEL 1;
+COMP "y<7>" LOCATE = SITE "AE6" LEVEL 1;
+COMP "a<2>" LOCATE = SITE "AF13" LEVEL 1;
+COMP "a<3>" LOCATE = SITE "AD15" LEVEL 1;
+COMP "b<0>" LOCATE = SITE "AD12" LEVEL 1;
+COMP "a<4>" LOCATE = SITE "AE15" LEVEL 1;
+COMP "b<1>" LOCATE = SITE "AC11" LEVEL 1;
+COMP "a<5>" LOCATE = SITE "AA15" LEVEL 1;
+COMP "b<2>" LOCATE = SITE "W12" LEVEL 1;
+COMP "a<6>" LOCATE = SITE "AB15" LEVEL 1;
+COMP "b<3>" LOCATE = SITE "W13" LEVEL 1;
+COMP "a<7>" LOCATE = SITE "Y16" LEVEL 1;
+COMP "b<4>" LOCATE = SITE "Y13" LEVEL 1;
+COMP "b<5>" LOCATE = SITE "AE12" LEVEL 1;
+COMP "b<6>" LOCATE = SITE "AF12" LEVEL 1;
+COMP "b<7>" LOCATE = SITE "AB14" LEVEL 1;
+SCHEMATIC END;
+

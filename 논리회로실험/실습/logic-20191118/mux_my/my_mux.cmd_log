@@ -1,0 +1,12 @@
+xst -intstyle ise -ifn "C:/logic/mux_my/my_mux.xst" -ofn "C:/logic/mux_my/my_mux.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_mux.ucf -p xc3s1000-fg676-5 my_mux.ngc my_mux.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o my_mux_map.ncd my_mux.ngd my_mux.pcf 
+par -w -intstyle ise -ol high -t 1 my_mux_map.ncd my_mux.ncd my_mux.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml my_mux.twx my_mux.ncd -o my_mux.twr my_mux.pcf -ucf my_mux.ucf 
+bitgen -intstyle ise -f my_mux.ut my_mux.ncd 
+xst -intstyle ise -ifn "C:/logic/mux_my/my_mux.xst" -ofn "C:/logic/mux_my/my_mux.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_mux.ucf -p xc3s1000-fg676-5 my_mux.ngc my_mux.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o my_mux_map.ncd my_mux.ngd my_mux.pcf 
+par -w -intstyle ise -ol high -t 1 my_mux_map.ncd my_mux.ncd my_mux.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml my_mux.twx my_mux.ncd -o my_mux.twr my_mux.pcf -ucf my_mux.ucf 
+bitgen -intstyle ise -f my_mux.ut my_mux.ncd 

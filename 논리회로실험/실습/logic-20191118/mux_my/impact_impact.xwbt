@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=C:\logic\mux_my\impact.xsl
+OUTFILE=C:\logic\mux_my\impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=C:\logic\mux_my
+LICENSE=iMPACT
+USER_INFO=iMPACT

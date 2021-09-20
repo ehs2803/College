@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\logic\bcdto7_seg\bcd_seg_dec.ncd
+OUTFILE=C:\logic\bcdto7_seg\bcd_seg_dec.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=C:\logic\bcdto7_seg
+LICENSE=WebPack
+USER_INFO=__0_0_0

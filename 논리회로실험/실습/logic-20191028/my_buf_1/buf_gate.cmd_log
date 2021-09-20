@@ -1,0 +1,26 @@
+xst -intstyle ise -ifn "D:/logic/my_buf_1/buf_gate.xst" -ofn "D:/logic/my_buf_1/buf_gate.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc buf_gate.ucf -p xc3s1000-fg676-5 buf_gate.ngc buf_gate.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o buf_gate_map.ncd buf_gate.ngd buf_gate.pcf 
+par -w -intstyle ise -ol high -t 1 buf_gate_map.ncd buf_gate.ncd buf_gate.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml buf_gate.twx buf_gate.ncd -o buf_gate.twr buf_gate.pcf -ucf buf_gate.ucf 
+bitgen -intstyle ise -f buf_gate.ut buf_gate.ncd 
+xst -intstyle ise -ifn "D:/logic/my_buf_1/buf_gate.xst" -ofn "D:/logic/my_buf_1/buf_gate.syr" 
+xst -intstyle ise -ifn "D:/logic/my_buf_1/buf_gate.xst" -ofn "D:/logic/my_buf_1/buf_gate.syr" 
+xst -intstyle ise -ifn "D:/logic/my_buf_1/buf_gate.xst" -ofn "D:/logic/my_buf_1/buf_gate.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc buf_gate.ucf -p xc3s1000-fg676-5 buf_gate.ngc buf_gate.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o buf_gate_map.ncd buf_gate.ngd buf_gate.pcf 
+par -w -intstyle ise -ol high -t 1 buf_gate_map.ncd buf_gate.ncd buf_gate.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml buf_gate.twx buf_gate.ncd -o buf_gate.twr buf_gate.pcf -ucf buf_gate.ucf 
+bitgen -intstyle ise -f buf_gate.ut buf_gate.ncd 
+xst -intstyle ise -ifn "D:/logic/my_buf_1/buf_gate.xst" -ofn "D:/logic/my_buf_1/buf_gate.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc buf_gate.ucf -p xc3s1000-fg676-5 buf_gate.ngc buf_gate.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o buf_gate_map.ncd buf_gate.ngd buf_gate.pcf 
+par -w -intstyle ise -ol high -t 1 buf_gate_map.ncd buf_gate.ncd buf_gate.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml buf_gate.twx buf_gate.ncd -o buf_gate.twr buf_gate.pcf -ucf buf_gate.ucf 
+bitgen -intstyle ise -f buf_gate.ut buf_gate.ncd 
+xst -intstyle ise -ifn "D:/logic/my_buf_1/buf_gate.xst" -ofn "D:/logic/my_buf_1/buf_gate.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc buf_gate.ucf -p xc3s1000-fg676-5 buf_gate.ngc buf_gate.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o buf_gate_map.ncd buf_gate.ngd buf_gate.pcf 
+par -w -intstyle ise -ol high -t 1 buf_gate_map.ncd buf_gate.ncd buf_gate.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml buf_gate.twx buf_gate.ncd -o buf_gate.twr buf_gate.pcf -ucf buf_gate.ucf 
+bitgen -intstyle ise -f buf_gate.ut buf_gate.ncd 

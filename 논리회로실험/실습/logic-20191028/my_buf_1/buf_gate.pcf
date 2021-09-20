@@ -1,0 +1,10 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Mon Oct 28 17:24:20 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "data" LOCATE = SITE "AD10" LEVEL 1;
+COMP "control" LOCATE = SITE "AC10" LEVEL 1;
+COMP "out" LOCATE = SITE "AB7" LEVEL 1;
+SCHEMATIC END;
+

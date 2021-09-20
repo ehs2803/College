@@ -1,0 +1,25 @@
+
+
+NET "b[0]" LOC = AB14;
+NET "a[0]" LOC = Y16;
+NET "cin" LOC = AA9;
+NET "cout" LOC = AA7;
+NET "sum[0]" LOC = AE6;
+
+# PlanAhead Generated physical constraints 
+
+NET "sum[1]" LOC = AF6;
+NET "sum[2]" LOC = AC6;
+NET "sum[3]" LOC = AD6;
+NET "sum[5]" LOC = AF7;
+NET "sum[4]" LOC = AC7;
+NET "a[1]" LOC = AB15;
+NET "a[2]" LOC = AA15;
+NET "a[4]" LOC = AD15;
+NET "a[5]" LOC = AF13;
+NET "a[3]" LOC = AE15;
+NET "b[1]" LOC = AF12;
+NET "b[2]" LOC = AE12;
+NET "b[4]" LOC = W13;
+NET "b[5]" LOC = W12;
+NET "b[3]" LOC = Y13;

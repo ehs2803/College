@@ -1,0 +1,31 @@
+
+
+NET "a[7]" LOC = Y16;
+NET "a[6]" LOC = AB15;
+NET "a[5]" LOC = AA15;
+NET "a[4]" LOC = AE15;
+NET "a[3]" LOC = AD15;
+NET "a[2]" LOC = AF13;
+NET "a[1]" LOC = AA13;
+NET "a[0]" LOC = W15;
+NET "b[7]" LOC = AB14;
+NET "b[6]" LOC = AF12;
+NET "b[5]" LOC = AE12;
+NET "b[4]" LOC = Y13;
+NET "b[3]" LOC = W13;
+NET "b[2]" LOC = W12;
+NET "b[0]" LOC = AD12;
+NET "b[1]" LOC = AC11;
+
+
+NET "y[7]" LOC = AE6;
+NET "y[6]" LOC = AF6;
+NET "y[5]" LOC = AC6;
+NET "y[4]" LOC = AD6;
+NET "y[3]" LOC = AC7;
+NET "y[2]" LOC = AF7;
+NET "y[1]" LOC = AA7;
+
+# PlanAhead Generated physical constraints 
+
+NET "y[0]" LOC = AB7;

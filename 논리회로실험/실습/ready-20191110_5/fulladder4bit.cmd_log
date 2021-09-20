@@ -1,0 +1,8 @@
+xst -intstyle ise -ifn "C:/LOGIC/ready-20191110_5/fulladder4bit.xst" -ofn "C:/LOGIC/ready-20191110_5/fulladder4bit.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc fulladder4bit.ucf -p xc3s1000-fg676-5 fulladder4bit.ngc fulladder4bit.ngd  
+map -intstyle ise -p xc3s1000-fg676-5 -cm area -ir off -pr off -c 100 -o fulladder4bit_map.ncd fulladder4bit.ngd fulladder4bit.pcf 
+par -w -intstyle ise -ol high -t 1 fulladder4bit_map.ncd fulladder4bit.ncd fulladder4bit.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml fulladder4bit.twx fulladder4bit.ncd -o fulladder4bit.twr fulladder4bit.pcf -ucf fulladder4bit.ucf 
+bitgen -intstyle ise -f fulladder4bit.ut fulladder4bit.ncd 
+vhdtdtfi -lib work C:/LOGIC/ready-20191110_5/fulladder4bit.v -lang verilog -prj ready-20191110_5 -o fulladder4bit.spl -module fulladder4bit -template D:/xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3 fulladder4bit.spl C:/LOGIC/ready-20191110_5/fulladder4bit.sym 

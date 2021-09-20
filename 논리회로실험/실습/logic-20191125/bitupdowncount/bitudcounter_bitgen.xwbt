@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\logic-20191125\bitupdowncount\bitudcounter.ncd
+OUTFILE=D:\logic-20191125\bitupdowncount\bitudcounter.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=D:\logic-20191125\bitupdowncount
+LICENSE=WebPack
+USER_INFO=__0_0_0

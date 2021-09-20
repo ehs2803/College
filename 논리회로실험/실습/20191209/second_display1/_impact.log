@@ -1,0 +1,198 @@
+iMPACT Version: 
+iMPACT log file Started on Tue Nov 22 00:26:06 2011
+
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+AutoDetecting cable. Please wait.
+PROGRESS_START - Starting Operation.
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 10.0.1.0. WinDriver v10.01minor 1 Jungo (c) 1997 - 2009 Build Date: May 14 2009 X86 32bitSYS 13:42:25, version = 1001.
+ LPT base address = 0378h.
+ ECP base address = FFFFFFFFh.
+Cable connection established.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+Attempting to identify devices in the boundary-scan chain configuration...// *** BATCH CMD : Identify 
+PROGRESS_START - Starting Operation.
+Identifying chain contents ....'1': : Manufacturer's ID =Xilinx xc3s1000, Version : 1
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/spartan3/data/xc3s1000.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': : Manufacturer's ID =Xilinx xcf08p, Version : 14
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/xcfp/data/xcf08p.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf08p successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 2 -file"D:/temp/second_display/second_two_digits.bit"
+'2': Loading file 'D:/temp/second_display/second_two_digits.bit' ...
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+// *** BATCH CMD : assignFile -p 2 -file"D:/temp/second_display/second_two_digits.bit"
+'2': Loading file 'D:/temp/second_display/second_two_digits.bit' ...
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Updating config file D:/temp/second_display/second_two_digits.bit...
+// *** BATCH CMD : Program -p 2 -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+// *** BATCH CMD : assignFile -p 2 -file"D:/temp/second_display/second_two_digits.bit"
+'2': Loading file 'D:/temp/second_display/second_two_digits.bit' ...
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : assignFile -p 2 -file"D:/temp/second_display/second_two_digits.bit"
+'2': Loading file 'D:/temp/second_display/second_two_digits.bit' ...
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Updating config file D:/temp/second_display/second_two_digits.bit...
+// *** BATCH CMD : Program -p 2 -defaultVersion 0 
+ERROR:iMPACT:583 - '2': The idcode read from the device does not match the   idcode in the bsdl File.
+INFO:iMPACT:1578 - '2':  Device IDCODE :        00000000000000000000000000000000
+INFO:iMPACT:1579 - '2': Expected IDCODE:    00000001010000101000000010010011
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+PROGRESS_START - Starting Operation.
+// *** BATCH CMD : assignFile -p 2 -file"D:/temp/second_display/second_two_digits.bit"
+'2': Loading file 'D:/temp/second_display/second_two_digits.bit' ...
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : assignFile -p 2 -file"D:/temp/second_display/second_two_digits.bit"
+'2': Loading file 'D:/temp/second_display/second_two_digits.bit' ...
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+// *** BATCH CMD : saveProjectFile -file"D:\temp\second_display/second_display.ipf"
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs

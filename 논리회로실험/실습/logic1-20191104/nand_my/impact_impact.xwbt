@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=D:\logic1\nand_my\impact.xsl
+OUTFILE=D:\logic1\nand_my\impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=D:\logic1\nand_my
+LICENSE=iMPACT
+USER_INFO=iMPACT

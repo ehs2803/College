@@ -1,0 +1,51 @@
+xst -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -ifn second_two_digits.xst -ofn second_two_digits.syr
+ngdbuild -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -dd _ngo -nt timestamp -uc "two_digit_dis.ucf" -p xc3s1000-fg676-4 "second_two_digits.ngc" second_two_digits.ngd
+xst -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -ifn second_two_digits.xst -ofn second_two_digits.syr
+ngdbuild -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -dd _ngo -nt timestamp -uc "two_digit_dis.ucf" -p xc3s1000-fg676-4 "second_two_digits.ngc" second_two_digits.ngd
+map -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -p xc3s1000-fg676-4 -cm area -pr b -k 4 -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf
+par -ise "D:/temp/second_display/sec_display.ise" -w -intstyle ise -ol std -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf
+trce -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -e 3 -s 4 -xml second_two_digits second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf
+bitgen -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -f second_two_digits.ut second_two_digits.ncd
+xst -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -ifn second_two_digits.xst -ofn second_two_digits.syr
+ngdbuild -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -dd _ngo -nt timestamp -uc "two_digit_dis.ucf" -p xc3s1000-fg676-4 "second_two_digits.ngc" second_two_digits.ngd
+map -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -p xc3s1000-fg676-4 -cm area -pr b -k 4 -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf
+par -ise "D:/temp/second_display/sec_display.ise" -w -intstyle ise -ol std -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf
+trce -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -e 3 -s 4 -xml second_two_digits second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf
+bitgen -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -f second_two_digits.ut second_two_digits.ncd
+xst -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -ifn second_two_digits.xst -ofn second_two_digits.syr
+ngdbuild -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -dd _ngo -nt timestamp -uc "two_digit_dis.ucf" -p xc3s1000-fg676-4 "second_two_digits.ngc" second_two_digits.ngd
+map -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -p xc3s1000-fg676-4 -cm area -pr b -k 4 -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf
+par -ise "D:/temp/second_display/sec_display.ise" -w -intstyle ise -ol std -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf
+trce -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -e 3 -s 4 -xml second_two_digits second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf
+bitgen -ise "D:/temp/second_display/sec_display.ise" -intstyle ise -f second_two_digits.ut second_two_digits.ncd
+xst -intstyle ise -ifn "D:/second_display/second_two_digits.xst" -ofn "D:/second_display/second_two_digits.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 second_two_digits.ngc second_two_digits.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf 
+par -w -intstyle ise -ol high -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml second_two_digits.twx second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f second_two_digits.ut second_two_digits.ncd 
+xst -intstyle ise -ifn "D:/second_display/second_two_digits.xst" -ofn "D:/second_display/second_two_digits.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 second_two_digits.ngc second_two_digits.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf 
+par -w -intstyle ise -ol high -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml second_two_digits.twx second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f second_two_digits.ut second_two_digits.ncd 
+xst -intstyle ise -ifn "D:/second_display/second_two_digits.xst" -ofn "D:/second_display/second_two_digits.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 second_two_digits.ngc second_two_digits.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf 
+par -w -intstyle ise -ol high -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml second_two_digits.twx second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f second_two_digits.ut second_two_digits.ncd 
+xst -intstyle ise -ifn "D:/second_display/second_two_digits.xst" -ofn "D:/second_display/second_two_digits.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 second_two_digits.ngc second_two_digits.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf 
+par -w -intstyle ise -ol high -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml second_two_digits.twx second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f second_two_digits.ut second_two_digits.ncd 
+xst -intstyle ise -ifn "D:/second_display/second_two_digits.xst" -ofn "D:/second_display/second_two_digits.syr" 
+xst -intstyle ise -ifn "D:/second_display/second_two_digits.xst" -ofn "D:/second_display/second_two_digits.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc two_digit_dis.ucf -p xc3s1000-fg676-4 second_two_digits.ngc second_two_digits.ngd  
+map -intstyle ise -p xc3s1000-fg676-4 -cm area -ir off -pr b -c 100 -o second_two_digits_map.ncd second_two_digits.ngd second_two_digits.pcf 
+par -w -intstyle ise -ol high -t 1 second_two_digits_map.ncd second_two_digits.ncd second_two_digits.pcf 
+trce -intstyle ise -e 3 -s 4 -n 3 -xml second_two_digits.twx second_two_digits.ncd -o second_two_digits.twr second_two_digits.pcf -ucf two_digit_dis.ucf 
+bitgen -intstyle ise -f second_two_digits.ut second_two_digits.ncd 

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\logic\mux_my\my_mux.ncd
+OUTFILE=C:\logic\mux_my\my_mux.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=C:\logic\mux_my
+LICENSE=WebPack
+USER_INFO=__0_0_0

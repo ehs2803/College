@@ -1,0 +1,7 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "rst" LOC = AD10;
+NET "mclk_out" LOC = AB7;
+NET "clk_1hz" LOC = AE6;
+NET "mclk" LOC = A13;

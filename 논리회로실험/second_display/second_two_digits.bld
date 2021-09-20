@@ -1,0 +1,32 @@
+Release 9.2i ngdbuild J.36
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx92i\bin\nt\ngdbuild.exe -ise
+D:/temp/second_display/sec_display.ise -intstyle ise -dd _ngo -nt timestamp -uc
+two_digit_dis.ucf -p xc3s1000-fg676-4 second_two_digits.ngc
+second_two_digits.ngd
+
+Reading NGO file "D:/temp/second_display/second_two_digits.ngc" ...
+
+Applying constraints in "two_digit_dis.ucf" to the design...
+
+Checking timing specifications ...
+Checking Partitions ...
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 71396 kilobytes
+
+Writing NGD file "second_two_digits.ngd" ...
+
+Writing NGDBUILD log file "second_two_digits.bld"...

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\logic-20191202\bujugi\bunju.ncd
+OUTFILE=D:\logic-20191202\bujugi\bunju.bit
+FAMILY=Spartan3
+PART=xc3s1000-5fg676
+WORKINGDIR=D:\logic-20191202\bujugi
+LICENSE=WebPack
+USER_INFO=__0_0_0
