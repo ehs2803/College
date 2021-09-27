@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<A:BookCatalog xmlns:A="http://cs.skuniv.ac.kr/web/20210927">
+    <A:Book>
+        <A:Title>xml프로그래밍</A:Title>
+        <A:Author>홍길동</A:Author>
+        <A:Year>2021</A:Year>
+        <A:summary>
+            <![CDATA[XML의 역사와 함께 그 <사용법>을 배운다 저자는 ??? ... && ""]]>     
+        </A:summary>
+    </A:Book>
+    <A:Book>
+        <A:Title>C언어</A:Title>
+        <A:Author>김길동</A:Author>
+        <A:Year>2020</A:Year>
+        <A:summary>
+            <![CDATA[C언어의 역사와 함께 그 <사용법>을 배운다 저자는 ??? ... && ""]]>     
+        </A:summary>
+    </A:Book>
+</A:BookCatalog>
