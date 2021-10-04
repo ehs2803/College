@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE BookCatalog[
+    <!ELEMENT BookCatalog (Book*)>
+    <!ELEMENT Book (Title, Author, Year)>
+    <!ELEMENT Title (#PCDATA)>
+    <!ELEMENT Author (#PCDATA)>
+    <!ELEMENT Year (#PCDATA)>
+]>
+<BookCatalog>
+    <Book>
+        <Title>xml프로그래밍</Title>
+        <Author>홍길동</Author>
+        <Year>2021</Year>
+    </Book>
+    <Book>
+        <Title>C언어</Title>
+        <Author>김길동</Author>
+        <Year>2020</Year>
+    </Book>
+</BookCatalog>

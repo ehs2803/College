@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE BookCatalog[
+    <!ELEMENT BookCatalog (Book*)>
+    <!ELEMENT Book ((BookCode|Title), CoAuthor, Year, Summary)>
+    <!ATTLIST Book lang CDATA #FIXED "ko" >
+    <!ATTLIST Book code ID #IMPLIED>
+    <!ELEMENT BookCode (#PCDATA)>
+    <!ELEMENT Title (#PCDATA)>
+    <!ELEMENT CoAuthor (#PCDATA|Author)*>
+    <!ELEMENT Author (#PCDATA)>
+    <!ELEMENT Year (#PCDATA)>
+    <!ELEMENT Summary ANY >
+    
+]>
+<BookCatalog>
+     <Book code="내책1">
+          <BookCode> BC233-233 </BookCode>
+          <CoAuthor> 
+               Mike
+               <Author> steve </Author>
+          </CoAuthor>
+          <Year> 2020 </Year>
+          <Summary> hello </Summary>
+     </Book>
+     <Book code="내책2">
+          <Title> c language </Title>
+          <CoAuthor> 
+               sam
+          </CoAuthor>
+          <Year> 2021 </Year>
+          <Summary> summary test </Summary>
+     </Book>
+</BookCatalog>
+<!-- 유효성 검사-->
+<!--
+-xml 파일에 Book 요소들 code속성값을 중복시켜보세요. : 오류남.
+- ID선언에 있어서 #IMPLIED or #REQUIRED 가 생략된다면 ? : 오류남.
+- ID 속성 값에 공백문자가 들어있다면? : 오류남.
+-->

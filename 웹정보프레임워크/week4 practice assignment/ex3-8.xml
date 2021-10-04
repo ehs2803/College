@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE BookCatalog[
+    <!ELEMENT BookCatalog (Book*)>
+    <!ELEMENT Book ((BookCode|Title), CoAuthor, Price, Year, Summary)>
+    <!ATTLIST Book lang CDATA #FIXED "ko" >
+    <!ATTLIST Book code ID #IMPLIED>
+    <!ELEMENT BookCode (#PCDATA)>
+    <!ELEMENT Title (#PCDATA)>
+    <!ELEMENT CoAuthor (#PCDATA|Author)*>
+    <!ELEMENT Author (#PCDATA)>
+    <!ELEMENT Price (#PCDATA)>
+    <!ATTLIST Price unit (원|달러|엔) #IMPLIED >
+    <!ELEMENT Year (#PCDATA)>
+    <!ELEMENT Summary ANY >
+    
+]>
+<BookCatalog>
+     <Book code="내책1">
+          <BookCode> BC233-233 </BookCode>
+          <CoAuthor> 
+               Mike
+               <Author> steve </Author>
+          </CoAuthor>
+          <Price unit="원"> 2000 </Price>
+          <Year> 2020 </Year>
+          <Summary> hello </Summary>
+     </Book>
+     <Book code="내책2">
+          <Title> c language </Title>
+          <CoAuthor> 
+               sam
+          </CoAuthor>
+          <Price> 3000 </Price>
+          <Year> 2021 </Year>
+          <Summary> summary test </Summary>
+     </Book>
+</BookCatalog>

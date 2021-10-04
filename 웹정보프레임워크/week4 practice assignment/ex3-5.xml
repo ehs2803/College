@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE BookCatalog[
+    <!ELEMENT BookCatalog (Book*)>
+    <!ELEMENT Book ((BookCode|Title), CoAuthor, Year, Summary)>
+    <!ATTLIST Book lang CDATA "ko">
+    <!ELEMENT BookCode (#PCDATA)>
+    <!ELEMENT Title (#PCDATA)>
+    <!ELEMENT CoAuthor (#PCDATA|Author)*>
+    <!ELEMENT Author (#PCDATA)>
+    <!ELEMENT Year (#PCDATA)>
+    <!ELEMENT Summary ANY >
+    
+]>
+<BookCatalog>
+     <Book lang="en">
+          <BookCode> BC233-233 </BookCode>
+          <CoAuthor> 
+               Mike
+               <Author> steve </Author>
+          </CoAuthor>
+          <Year> 2020 </Year>
+          <Summary> hello </Summary>
+     </Book>
+     <Book>
+          <Title> c language </Title>
+          <CoAuthor> 
+               sam
+          </CoAuthor>
+          <Year> 2021 </Year>
+          <Summary> summary test </Summary>
+     </Book>
+</BookCatalog>
+<!-- 유효성 검사-->
