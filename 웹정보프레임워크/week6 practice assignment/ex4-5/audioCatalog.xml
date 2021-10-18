@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<AudioCatalog xmlns="http://www.ehs.com/audio" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://www.ehs.com/audio audioCatalog.xsd" > 
+     <Cd>
+          <Title> BTS 1집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2017 </Released-data>
+          <Song> 1번곡 </Song>
+          <Song> 2번곡 </Song>
+          <Song> 3번곡 </Song>
+     </Cd>
+     <Cd>
+          <Title> BTS 2집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2020 </Released-data>
+          <Song> 1번곡 </Song>
+          <Song> 2번곡 </Song>
+          <Song> 3번곡 </Song>
+     </Cd>
+     <Record>
+          <Title> BTS 3집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2021 </Released-data>
+          <Song> 1번곡 </Song>
+          <Song> 2번곡 </Song>
+          <Song> 3번곡 </Song>
+     </Record>
+     <Mp3>
+          <Title> BTS 4집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2021 </Released-data>
+          <Song> 1번곡 </Song>
+          <Song> 2번곡 </Song>
+          <Song> 3번곡 </Song>
+     </Mp3>
+</AudioCatalog> 
