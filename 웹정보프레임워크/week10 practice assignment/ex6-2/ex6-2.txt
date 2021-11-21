@@ -1,0 +1,17 @@
+0. document                                       // xmldoc
+     1. Element("order")                          // xmldoc.documentElement.nodeName
+          2. Attribute("number")                  // xmldoc.documentElement.attribute[0].nodeName
+               3. Text("3123")                    // xmldoc.documentElement.attribute[0].firstChild.nodeValue
+          2. Element("date")                      // xmldoc.documentElement.firstChild.nodeName
+               3. Text("2002/1/1")                // xmldoc.documentElement.firstChild.firstChild.nodeValue
+          2. Element("customer")                  // xmldoc.documentElement.childNode[1].nodeName
+               3. Attribute("id")                 // xmldoc.documentElement.childNode[1].attribute[0].nodeName               
+                    4. Text("216A")               // xmldoc.selectSingleNode("//@id").firstChild.nodeValue
+               3. Text("CompanyA")                // xmldoc.documentElement.childNode[1].firstChild.nodeValue
+          2. Element("item")                      // (xmldoc.getElementByTagName("item"))[0].nodeName
+               3. Element("part-number")          // xmldoc.documentElement.childNode[2].firstChild.nodeName
+                    4. Attribute("warehouse")     // xmldoc.documentElement.childNode[2].firstChild.attribute[0].nodeName
+                         5. Text("Warehouse 11")  // xmldoc.documentElement.childNode[2].firstChild.attribute[0].firstChild.nodeValue
+                    4.Text("E16-25A")             // xmldoc.documentElement.childNode[2].firstChild.firstChild.nodeValue
+               3. Element("quantity")             // xmldoc.documentElement.childNode[2].childNode[1].nodeName
+                    4. Text("16")                 // xmldoc.documentElement.childNode[2].childNode[1].firstChild.nodeValue

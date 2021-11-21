@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<AudioCatalog xmlns="http://www.ehs.com/audio" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://www.ehs.com/audio audioCatalog.xsd" > 
+     <Cd>
+          <Title> BTS 1집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2017 </Released-data>
+          <Song> 
+              <playTime>
+                    <hourScope> 1 </hourScope>
+                    <minuteScope> 30 </minuteScope>
+                    <secondScope> 55 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 9 </hourScope>
+                    <minuteScope> 59 </minuteScope>
+                    <secondScope> 59 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 7 </hourScope>
+                    <minuteScope> 10 </minuteScope>
+                    <secondScope> 50 </secondScope>
+               </playTime>
+          </Song>
+     </Cd>
+     <Cd>
+          <Title> BTS 2집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2018 </Released-data>
+          <Song> 
+              <playTime>
+                    <hourScope> 7 </hourScope>
+                    <minuteScope> 30 </minuteScope>
+                    <secondScope> 55 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 9 </hourScope>
+                    <minuteScope> 59 </minuteScope>
+                    <secondScope> 59 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 7 </hourScope>
+                    <minuteScope> 10 </minuteScope>
+                    <secondScope> 50 </secondScope>
+               </playTime>
+          </Song>
+     </Cd>
+     <Record>
+          <Title> BTS 3집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2020 </Released-data>
+          <Song> 
+              <playTime>
+                    <hourScope> 1 </hourScope>
+                    <minuteScope> 30 </minuteScope>
+                    <secondScope> 55 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 9 </hourScope>
+                    <minuteScope> 59 </minuteScope>
+                    <secondScope> 59 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 7 </hourScope>
+                    <minuteScope> 10 </minuteScope>
+                    <secondScope> 50 </secondScope>
+               </playTime>
+          </Song>
+     </Record>
+     <Mp3>
+          <Title> BTS 4집 </Title>
+          <Artist> BST </Artist>
+          <Genre> dance </Genre>
+          <Released-data> 2021 </Released-data>
+          <Song> 
+              <playTime>
+                    <hourScope> 1 </hourScope>
+                    <minuteScope> 30 </minuteScope>
+                    <secondScope> 55 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 9 </hourScope>
+                    <minuteScope> 59 </minuteScope>
+                    <secondScope> 59 </secondScope>
+               </playTime>
+          </Song>
+          <Song> 
+               <playTime>
+                    <hourScope> 7 </hourScope>
+                    <minuteScope> 10 </minuteScope>
+                    <secondScope> 50 </secondScope>
+               </playTime>
+          </Song>
+     </Mp3>
+</AudioCatalog> 

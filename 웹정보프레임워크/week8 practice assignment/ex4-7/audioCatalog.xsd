@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+          targetNamespace="http://www.ehs.com/audio" 
+          xmlns:target="http://www.ehs.com/audio" 
+          elementFormDefault="qualified"> 
+
+     <group name="AlbumGroup">
+          <sequence>
+               <element name="Title" type="string"/>
+               <element name="Artist" type="string"/>
+               <element name="Genre" type="string"/>
+               <element name="Released-data" type="string"/>
+               <element name="Song" maxOccurs="unbounded">
+                    <complexType>
+                    <sequence>
+                         <element name="playTime">
+                         <complexType>
+                              <sequence>
+                                   <element name="hourScope">
+                                        <simpleType>
+                                             <restriction base="integer">
+                                                  <minInclusive value="0" />
+                                                  <maxExclusive value="10" />
+                                             </restriction>
+                                        </simpleType>
+                                   </element>
+                                   <element name="minuteScope">
+                                        <simpleType>
+                                             <restriction base="integer">
+                                                  <minInclusive value="0" />
+                                                  <maxExclusive value="60" />
+                                             </restriction>
+                                        </simpleType>
+                                   </element>
+                                   <element name="secondScope">
+                                        <simpleType>
+                                             <restriction base="integer">
+                                                  <minInclusive value="0" />
+                                                  <maxExclusive value="1060" />
+                                             </restriction>
+                                        </simpleType>
+                                   </element>
+                              </sequence>
+                         </complexType>
+                         </element>
+                    </sequence>
+                    </complexType>
+               </element>
+          </sequence>
+     </group>
+
+     <element name="AudioCatalog">
+          <complexType>
+               <choice maxOccurs="unbounded">
+                    <element name="Cd">
+                         <complexType>
+                              <group ref="target:AlbumGroup" />
+                         </complexType>
+                    </element>
+                    <element name="Record">
+                         <complexType>
+                              <group ref="target:AlbumGroup" />
+                         </complexType>
+                    </element>
+                    <element name="Mp3">
+                         <complexType>
+                              <group ref="target:AlbumGroup" />
+                         </complexType>
+                    </element>
+               </choice>
+          </complexType>
+     </element>
+</schema> 
