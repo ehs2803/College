@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+     <script language="JavaScript">
+          var xmldoc = new ActiveXObject("MSXML.DOMDocument");
+          xmldoc.async = false;
+          xmldoc.load("names2.xml");
+
+          var nodes = xmldoc.getElementsByTagName("name");
+          for(var i = 0; i< nodes.length; ++i)
+               alert(nodes[i].attributes.getNamedItem("first").nodeValue);
+          
+          var nodes = xmldoc.selectNodes("//@first");
+          for(var i = 0; i< nodes.length; ++i)
+               alert(nodes[i].nodeValue);
+     </script>
+</body>
+</html>
