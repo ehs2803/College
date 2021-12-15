@@ -1,0 +1,66 @@
+<html>
+     <head>
+        <meta charset="utf-8">  
+  
+     <script>
+          var xhr = new XMLHttpRequest();
+          var url = 'http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth'; /*URL*/
+          var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'O9%2FzxATILEOqXHWNZM6rDN2UXEmueF1yOIURlNSAshJpcjhZg6cObeu16LCGZUr%2BDbbjoiMdCfz9XZv3y6zAKg%3D%3D'; /*Service Key*/
+          queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('xml'); /**/
+          queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
+          queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+          queryParams += '&' + encodeURIComponent('searchDate') + '=' + encodeURIComponent('2020-11-14'); /**/
+          queryParams += '&' + encodeURIComponent('InformCode') + '=' + encodeURIComponent('PM10'); /**/
+          xhr.open('GET', url + queryParams);
+          xhr.open('GET', url + queryParams);	  
+          xhr.onreadystatechange = function() {
+               if (this.readyState == 4) {
+                   //alert(this.responseText);  
+                   var xmldoc = this.responseXML;
+                   var item = xmldoc.getElementsByTagName("item");
+                   for(var i = 0 ; i < item.length ; ++i )
+                   {
+                         var time = item[i].getElementsByTagName("dataTime");
+                         var pm10 = item[i].getElementsByTagName("pm10Value");
+                         var pm25 = item[i].getElementsByTagName("pm25Value");
+                         alert(time[0].firstChild.nodeValue+": pm10("+pm10[0].firstChild.nodeValue+"), pm2.5("+pm25[0].firstChild.nodeValue+")");
+                    }
+                }		  
+           };  
+           xhr.send('');
+          </script>
+          </head>
+          <body>
+               <script>
+                    document.body.innerHTML = "<p>" + url+queryParams+"</p>";
+               </script>
+          </body>
+</html>
+
+<script>
+var xhr = new XMLHttpRequest();
+var url = 'http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth'; /*URL*/
+var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'서비스키'; /*Service Key*/
+queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('xml'); /**/
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+queryParams += '&' + encodeURIComponent('searchDate') + '=' + encodeURIComponent('2020-11-14'); /**/
+queryParams += '&' + encodeURIComponent('InformCode') + '=' + encodeURIComponent('PM10'); /**/
+xhr.open('GET', url + queryParams);
+xhr.open('GET', url + queryParams);	  
+xhr.onreadystatechange = function() {
+     if (this.readyState == 4) {
+         //alert(this.responseText);  
+         var xmldoc = this.responseXML;
+         var item = xmldoc.getElementsByTagName("item");
+         for(var i = 0 ; i < item.length ; ++i )
+         {
+               var time = item[i].getElementsByTagName("dataTime");
+               var pm10 = item[i].getElementsByTagName("pm10Value");
+               var pm25 = item[i].getElementsByTagName("pm25Value");
+               alert(time[0].firstChild.nodeValue+": pm10("+pm10[0].firstChild.nodeValue+"), pm2.5("+pm25[0].firstChild.nodeValue+")");
+          }
+      }		  
+ };  
+ xhr.send('');
+</script>
