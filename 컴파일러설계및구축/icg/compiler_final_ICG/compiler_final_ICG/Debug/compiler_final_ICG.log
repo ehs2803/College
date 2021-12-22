@@ -1,0 +1,13 @@
+﻿  ICG.c
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(149,51): warning C4047: '함수': 'int *(__cdecl *)()'의 간접 참조 수준이 'int'과(와) 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(149,50): warning C4024: 'icg_error': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(169,49): warning C4047: '함수': 'int *(__cdecl *)()'의 간접 참조 수준이 'int'과(와) 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(169,48): warning C4024: 'icg_error': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(702,51): warning C4047: '함수': 'int *(__cdecl *)()'의 간접 참조 수준이 'int'과(와) 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(702,50): warning C4024: 'icg_error': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(700,16): warning C4101: 'q' :참조되지 않은 지역 변수입니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(792,51): warning C4047: '함수': 'int *(__cdecl *)()'의 간접 참조 수준이 'int'과(와) 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(792,50): warning C4024: 'icg_error': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(871,25): warning C4047: '함수': 'int *(__cdecl *)()'의 간접 참조 수준이 'int'과(와) 다릅니다.
+C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\compiler_final_ICG\ICG.c(871,24): warning C4024: 'icg_error': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+  compiler_final_ICG.vcxproj -> C:\Users\nec\Desktop\2019305059 이현수\compiler_final_ICG\Debug\compiler_final_ICG.exe
