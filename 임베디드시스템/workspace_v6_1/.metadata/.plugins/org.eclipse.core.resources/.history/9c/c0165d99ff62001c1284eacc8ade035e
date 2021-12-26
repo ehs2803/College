@@ -1,0 +1,1031 @@
+#include "cortex_m4.h"
+#include "myLib.h"
+#include "math.h"
+#include "time.h"
+
+#define COLOR_BLUE		0x001f
+#define COLOR_GREEN		0x07E0
+#define COLOR_RED		0xF000
+#define COLOR_WHITE		0xFFFF
+#define COLOR_BLACK		0x0000
+#define COLOR_YELLOW	0xffA0
+#define COLOR_ORANGE    0xfac0
+#define COLOR_CYAN     0x0fff
+#define COLOR_PUPLE     0xd00f
+
+#define Image00			0x00000
+#define Image01			0x40000
+#define Image02			0x80000
+#define Image03			0xc0000
+#define Image04			0x100000
+#define Image05			0x140000
+#define Image06			0x180000
+#define Image07			0x1c0000
+
+unsigned char buffer[LCD_WIDTH * LCD_HEIGHT];
+int32_t PointerMessage(uint32_t ui32Message, int32_t i32X, int32_t i32Y);
+extern int32_t user_X, user_Y;
+uint32_t g_ui32SysClock;
+
+unsigned char buffer[LCD_WIDTH * LCD_HEIGHT];
+
+
+//int Melody_Name[] = {E1,D1,C1,D1,E1,E1,E1,D1,D1,D1,E1,E1,E1,E1,D1,C1,D1,E1,E1,E1,D1,D1,E1,D1,C1};
+//int PlayList[] = { C1, D1, E1, F1, G1, A1, B1 };
+//int colorlist[] = {COLOR_RED, COLOR_ORANGE ,COLOR_YELLOW};
+int count=0;
+//int nlist[] = {1,2,3,4,5,6,7,8};
+int mode=0;
+int cnt_touch=0;
+int rx1, rx2, ry1, ry2;
+int checkmade=0;
+int checktouchcnt=0;
+int checkimage=0;
+int checksroll=0;
+int cx, cy;
+int nx,ny;
+
+`int main(void) {
+	int width = 480;
+	int height = 272;
+	float BRD;
+	int   BRDI;
+	int   BRDF;
+
+	g_ui32SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
+										SYSCTL_OSC_MAIN | SYSCTL_USE_PLL |
+										SYSCTL_CFG_VCO_480), 120000000);
+
+	BRD = (float)g_ui32SysClock / (16 * 115200);
+	BRDI = (int)BRD;
+	BRDF = (int)(((BRD - (int)BRD)*64) + 0.5);
+	//Uart
+	Uart_Init(BRD, BRDI, BRDF);
+
+    LED_init();
+    DIP_init();
+    PUSH_init();
+
+    FND_init();
+
+
+	//LCD
+	LCD_Init(g_ui32SysClock);
+	//Touch
+	TouchScreenInit(g_ui32SysClock);
+    TouchScreenCallbackSet(PointerMessage);
+
+	//Buzzer
+	TIMER_init();
+	BUZZER_init();
+	GPTMCTL = GPTMCTL | 0x41;
+	BUZZER_clear();
+	WDTinitISR();
+
+
+
+
+
+
+
+
+	int dip_data;
+	int digit;
+	int number;
+	int check=0;
+	int code;
+	while(1){
+		dip_data = ( GPIO_READ(GPIO_PORTA, 0x08) >> 3 ) |
+					( GPIO_READ(GPIO_PORTA, 0x40) >> 5 ) |
+					( GPIO_READ(GPIO_PORTA, 0x80) >> 5 ) |
+					( GPIO_READ(GPIO_PORTB, 0x08) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x40) >> 2 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x20) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x10) << 2 ) |
+					( GPIO_READ(GPIO_PORTG, 0x40) << 1 );
+
+		if(dip_data & 0x01){
+			code = Uart_GetKey();
+			if('0'<=code && code<='6'){
+				digit=code-48;
+			}
+		}
+		if(dip_data & 0x02){
+			code = Uart_GetKey();
+			if('0'<=code && code<='9'){
+				number=code-48;
+				check=1;
+			}
+		}
+		code = Uart_GetKey();
+		if(code=='a'){
+			digit--;
+			if(digit==0) digit=6;
+		       GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+		       Play(C1);
+		       DelayForPlay(DLY_8);
+		       GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		       WDT1LOAD = 0xffffffff;
+		}
+		else if(code=='s'){
+			digit++;
+			if(digit==7) digit=1;
+		       GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+		       Play(E1);
+		       DelayForPlay(DLY_8);
+		       GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		       WDT1LOAD = 0xffffffff;
+		}
+		if(check==1){
+			WRITE_FND(digit,number);
+		}
+
+
+	}
+
+
+
+	/*
+	// 음계저장
+	int push_data, dip_data;
+	int flag=0;
+	int mode_input=0;
+	int mode_play=0;
+	int mode_scroll=0;
+	int savelist[10];
+	int index=0;
+	int cnt=0;
+	int temp;
+	int code;
+	int fast=1;
+	int lednum=0;
+	DrawRect_fill(buffer, 0,0, 60, 272, COLOR_RED);
+	DrawRect_fill(buffer, 60, 0, 120, 272, COLOR_ORANGE);
+	DrawRect_fill(buffer, 120, 0,180, 272, COLOR_YELLOW);
+	DrawRect_fill(buffer, 180, 0, 240, 272, COLOR_GREEN);
+	DrawRect_fill(buffer, 240, 0, 300, 272, COLOR_BLUE);
+	DrawRect_fill(buffer, 300, 0, 360, 272, COLOR_CYAN);
+	DrawRect_fill(buffer, 360, 0, 420, 272, COLOR_PUPLE);
+	DrawRect_fill(buffer, 420, 0, 480, 272, COLOR_BLACK);
+	while(1){
+		dip_data = ( GPIO_READ(GPIO_PORTA, 0x08) >> 3 ) |
+					( GPIO_READ(GPIO_PORTA, 0x40) >> 5 ) |
+					( GPIO_READ(GPIO_PORTA, 0x80) >> 5 ) |
+					( GPIO_READ(GPIO_PORTB, 0x08) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x40) >> 2 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x20) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x10) << 2 ) |
+					( GPIO_READ(GPIO_PORTG, 0x40) << 1 );
+		push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+							~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+							~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+							~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+
+
+
+		if(!flag){
+			if(push_data & 0x01){
+				flag=1;
+				mode_input=1;
+				cnt=0;
+
+			}
+			if(push_data & 0x02){
+				flag=1;
+				mode_input=0;
+
+			}
+			if(push_data & 0x04){
+				flag=1;
+				if(mode_play==1) mode_play=0;
+				else mode_play=1;
+
+			}
+			if(push_data & 0x08){
+				flag=1;
+				if(mode_scroll==1) mode_scroll=0;
+				else mode_scroll=1;
+
+			}
+		}
+		else if(flag && !(push_data & 0x1) && !(push_data & 0x2) &&
+				!(push_data & 0x4) &&!(push_data & 0x8)){
+			flag=0;
+		}
+
+		WRITE_FND(6,cnt);
+		if(mode_input==1){
+		    code = Uart_GetKey();
+		    if('0'<=code && code<='9'){
+		    	temp=code-48;
+		    	savelist[cnt]=temp-1;
+		    	cnt++;
+		    }
+		    Uart_PutCh(code);
+		}
+		if(mode_play==1){
+			   lednum=pow(2,savelist[index]);
+			   GPIO_WRITE(GPIO_PORTL, 0xf, lednum);
+			   GPIO_WRITE(GPIO_PORTM, 0xf, (lednum&0xf0)>>4);
+		       GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+		       Play(PlayList[savelist[index]]);
+		       DelayForPlay(DLY_8);
+		       GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		       WDT1LOAD = 0xffffffff;
+		       WRITE_FND(1,savelist[index]);
+		       index++;
+		       if(index>=cnt) index=0;
+		}
+		fast = dip_data;
+
+		if(mode_scroll==1){
+			if(fast==0) fast=1;
+			Scroll_left(buffer, 60, 0, width, height, fast);
+		}
+	}
+
+*/
+
+/*
+	DrawRect_fill(buffer, 0, 0, 60, 136, COLOR_BLACK);
+	DrawRect_fill(buffer, 0,136, 60, 272, COLOR_BLACK);
+
+	DrawRect_fill(buffer, 60, 0, 120, 272, COLOR_ORANGE);
+	DrawRect_fill(buffer, 120, 0,180, 272, COLOR_YELLOW);
+	DrawRect_fill(buffer, 180, 0, 240, 272, COLOR_GREEN);
+	DrawRect_fill(buffer, 240, 0, 300, 272, COLOR_BLUE);
+	DrawRect_fill(buffer, 300, 0, 360, 272, COLOR_CYAN);
+	DrawRect_fill(buffer, 360, 0, 420, 272, COLOR_PUPLE);
+	DrawRect_fill(buffer, 420, 0, 480, 272, COLOR_BLACK);
+	int i=0, k=0;
+	int dip_data, push_data;
+	int fast=0;
+	int code;
+	while(1){
+		dip_data = ( GPIO_READ(GPIO_PORTA, 0x08) >> 3 ) |
+					( GPIO_READ(GPIO_PORTA, 0x40) >> 5 ) |
+					( GPIO_READ(GPIO_PORTA, 0x80) >> 5 ) |
+					( GPIO_READ(GPIO_PORTB, 0x08) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x40) >> 2 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x20) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x10) << 2 ) |
+					( GPIO_READ(GPIO_PORTG, 0x40) << 1 );
+		push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+							~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+							~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+							~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+	    code = Uart_GetKey();
+	    Uart_PutCh(code);
+
+	    WRITE_FND(6,k);
+
+	    if(code=='1') {
+	       mode = 1;
+	       i=0;//도부터 시작
+	    }
+	    if(code=='2') {
+	       mode = 2;
+	       i=6;//시부터 시작
+	    }
+
+		if(dip_data==0){
+			fast=1;
+		}
+		else{
+			fast=dip_data;
+		}
+		if(push_data & 0x1){
+			DrawImage(buffer, 100, 100,200, 200, Image00);
+		}
+		else if(push_data&0x2){
+			DrawImage(buffer, 100, 100,200, 200, Image02);
+		}
+
+	    if(mode==1){
+	       Scroll_left(buffer, 60, 0, width, height, fast);
+	       GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+	       Play(PlayList[i]);
+	       //GPIO_WRITE(GPIO_PORTL, 0x0f,0x01 << i);    //시프트
+	       //GPIO_WRITE(GPIO_PORTM, 0x0f,0x01 << i>>4); //시프트
+	       GPIO_WRITE(GPIO_PORTL, 0x0f, pow(2,nlist[i])-1); //1 3 7 15
+	       GPIO_WRITE(GPIO_PORTM, 0x0f, (((int)pow(2,nlist[i])-1)&0xf0)>>4); //31 63 127 255
+	       i++;//음계 하나씩 올라감
+	       //GPIO_WRITE(GPIO_PORTL, 0x0f,i);//이진수로 숫자에 맞게 led
+	       WRITE_FND(6,k);
+	       if(i==7) {
+	          i=0;
+	          k++;//fnd
+	          if(k==10) k=0;
+	       }
+	       DelayForPlay(DLY_8);
+	       GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+	       WDT1LOAD = 0xffffffff;
+	       Scroll_left(buffer, 60, 0, width, height, fast);
+	    }
+	    if(mode==2){
+	       Scroll_right(buffer, 60, 0, width, height, fast);
+	       GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+	       Play(PlayList[i]);
+	       GPIO_WRITE(GPIO_PORTL, 0x0f,0x01 << i);    //시프트
+	       GPIO_WRITE(GPIO_PORTM, 0x0f,0x01 << i>>4); //시프트
+	       //GPIO_WRITE(GPIO_PORTL, 0x0f,i+1);//이진수로 숫자에 맞게 led
+	       WRITE_FND(6,k);
+	       i--;//음계 하나씩 내려감
+	       if(i==-1) {
+	          i=6;
+	          k--;//fnd
+	          if(k==-1) k=9;
+	       }
+	       DelayForPlay(DLY_8);
+	       GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+	       WDT1LOAD = 0xffffffff;
+	       Scroll_right(buffer, 60, 0, width, height, fast);
+	    }
+
+
+	}
+
+*/
+
+/*
+    //UART 응용3. 키보드 눌렀을 때, scroll,led,fnd
+	   unsigned char code;//UART 응용3
+	   int k=0;//UART 응용3. scroll
+
+	   int mode = 0;//LCD 과제1
+	   int i=0;//LCD 과제1
+	   GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+	   DrawRect_fill(buffer,0,         0, width/7,   height , COLOR_RED);
+	   DrawRect_fill(buffer,width/7,   0, width/7*2, height , COLOR_ORANGE);
+	   DrawRect_fill(buffer,width/7*2, 0, width/7*3, height , COLOR_YELLOW);
+	   DrawRect_fill(buffer,width/7*3, 0, width/7*4, height , COLOR_GREEN);
+	   DrawRect_fill(buffer,width/7*4, 0, width/7*5, height , COLOR_CYAN);
+	   DrawRect_fill(buffer,width/7*5, 0, width/7*6, height , COLOR_BLUE);
+	   DrawRect_fill(buffer,width/7*6, 0, width,     height , COLOR_PUPLE);
+	   while(1){
+		       int temp;
+    code = Uart_GetKey();
+    Uart_PutCh(code);
+
+    WRITE_FND(6,k);
+
+    if(code=='1') {
+       mode = 1;
+       i=0;//도부터 시작
+    }
+    if(code=='2') {
+       mode = 2;
+       i=6;//시부터 시작
+    }
+
+    if(mode==1){
+       Scroll_left(buffer, 0, 0, width, height, 2);
+       Play(PlayList[i]);
+       //GPIO_WRITE(GPIO_PORTL, 0x0f,0x01 << i);    //시프트
+       //GPIO_WRITE(GPIO_PORTM, 0x0f,0x01 << i>>4); //시프트
+       GPIO_WRITE(GPIO_PORTL, 0x0f, pow(2,nlist[i])-1); //1 3 7 15
+       GPIO_WRITE(GPIO_PORTM, 0x0f, (((int)pow(2,nlist[i])-1)&0xf0)>>4); //31 63 127 255
+       i++;//음계 하나씩 올라감
+       //GPIO_WRITE(GPIO_PORTL, 0x0f,i);//이진수로 숫자에 맞게 led
+       if(i==7) {
+          i=0;
+          k++;//fnd
+          if(k==10) k=0;
+       }
+       DelayForPlay(2);
+       Scroll_left(buffer, 0, 0, width, height, 2);
+    }
+    if(mode==2){
+       Scroll_right(buffer, 0, 0, width, height, 2);
+       Play(PlayList[i]);
+       GPIO_WRITE(GPIO_PORTL, 0x0f,0x01 << i);    //시프트
+       GPIO_WRITE(GPIO_PORTM, 0x0f,0x01 << i>>4); //시프트
+       //GPIO_WRITE(GPIO_PORTL, 0x0f,i+1);//이진수로 숫자에 맞게 led
+       i--;//음계 하나씩 내려감
+       if(i==-1) {
+          i=6;
+          k--;//fnd
+          if(k==-1) k=9;
+       }
+       DelayForPlay(2);
+       Scroll_right(buffer, 0, 0, width, height, 2);
+    }
+	   }
+
+*/
+	/*
+	// wasd + 스크롤
+	int x1=190, x2=290, y1=86, y2=186;
+	int tempx1=190, tempx2=290, tempy1=86, tempy2=186;
+	DrawRect_fill(buffer, x1,y1,x2,y2,COLOR_RED);
+	int code;
+	int index=0;
+	int push_data;
+	while(1){
+		push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+							~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+							~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+							~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+
+		if(push_data & 0x1){
+			while(1){
+			Scroll_right(buffer, 0, 0, 480, 272, 3);
+			}
+		}
+		code = Uart_GetKey();
+		Uart_PutCh(code);
+		if(code == 'w'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(C1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			y1 += 1;
+			y2 += 1;
+		}
+		if(code == 'a'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(D1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			x1 -= 1;
+			x2 -= 1;
+		}
+
+		if(code == 's'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(E1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			y1 -= 1;
+			y2 -= 1;
+		}
+		if(code == 'd'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(F1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			x1 += 1;
+			x2 += 1;
+		}
+
+		if(code == 'W'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(C1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			y1 += 5;
+			y2 += 5;
+		}
+		if(code == 'A'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(D1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			x1 -= 5;
+			x2 -= 5;
+		}
+		if(code == 'S'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(E1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			y1 -= 5;
+			y2 -= 5;
+		}
+		if(code == 'D'){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(F1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			x1 += 5;
+			x2 += 5;
+		}
+		WDT1LOAD = 0xffffffff;
+
+		if(x2 > 480 || x1 < 0 || y1 < 0 || y2 > 272){
+			x1 = tempx1;
+			x2 = tempx2;
+			y1 = tempy1;
+			y2 = tempy2;
+		}
+		else{
+			DrawRect_fill(buffer,tempx1,tempy1,tempx2,tempy2,COLOR_GREEN);
+			DrawRect_fill(buffer, x1,y1,x2,y2,colorlist[index]);
+			index++;
+			if(index==3) index=0;
+
+			tempx1 = x1;
+			tempx2 = x2;
+			tempy1 = y1;
+			tempy2 = y2;
+		}
+
+
+	}
+	*/
+
+
+	/*
+	// 숫자 누른데로 업카운트, 시프트 카운트
+	int code;
+	int i,num;
+	int temp;
+	while(1){
+		code = Uart_GetKey();
+
+		Uart_PutCh(code);
+
+		if(code=='t'){
+			uDrawTriangle(0, 0, 100, 0,200, 200, COLOR_RED);
+		}
+		else if(code=='r'){
+			uDrawRect(200, 200, 300, 300, COLOR_RED);
+		}
+		else if(code=='c'){
+			uDrawCircle(0, 200, 50, COLOR_RED);
+
+		}
+
+
+		if('1'<=code && code<='9'){
+			num = code-48;
+			for(i=0;i<=num;i++){
+				GPIO_WRITE(GPIO_PORTL, 0x0f,i);
+				GPIO_WRITE(GPIO_PORTM, 0x0f,(i&0xf0)>>4);
+				delay(2000000);
+			}
+		}
+
+
+		if('1'<=code && code<='9'){
+			num = code-48;
+			temp=1;
+			for(i=1;i<=num;i++){
+				GPIO_WRITE(GPIO_PORTL, 0x0f,temp);
+				GPIO_WRITE(GPIO_PORTM, 0x0f,(temp&0xf0)>>4);
+				temp = temp*2;
+				delay(2000000);
+			}
+		}
+
+		if('1'<=code && code<='9'){
+			num = code-48;
+			temp=1;
+			for(i=0;i<num;i++){
+				pow(2,temp[i]-1)
+
+				delay(2000000);
+			}
+		}
+
+
+	}
+
+*/
+
+
+	/*
+	// 중간고사 1번
+	int num=0;
+	int index=3;
+	int flag=0, dip_data, push_data;
+		while(1){
+			push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+								~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+								~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+								~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+			dip_data = ( GPIO_READ(GPIO_PORTA, 0x08) >> 3 ) |
+						( GPIO_READ(GPIO_PORTA, 0x40) >> 5 ) |
+						( GPIO_READ(GPIO_PORTA, 0x80) >> 5 ) |
+						( GPIO_READ(GPIO_PORTB, 0x08) >> 0 ) |
+						( GPIO_READ(GPIO_PORTQ, 0x40) >> 2 ) |
+						( GPIO_READ(GPIO_PORTQ, 0x20) >> 0 ) |
+						( GPIO_READ(GPIO_PORTQ, 0x10) << 2 ) |
+						( GPIO_READ(GPIO_PORTG, 0x40) << 1 );
+
+
+					WRITE_FND(index,num);
+
+			        if(!flag){
+			           if(push_data & 0x1){
+			        	  num = dip_data&0x0f;
+			              flag=1;
+			           }
+			           if(push_data & 0x02){
+			        	   if(dip_data&0x80){
+			        		   index++;
+			        		   if(index==7) index=1;
+			        	   }
+			        	   else{
+			        		   index--;
+			        		   if(index==0) index=6;
+			        	   }
+
+			              flag=1;
+			           }
+
+			        }
+			        else if(flag && !(push_data & 0x1) && !(push_data & 0x2)){
+			           flag=0;
+			        }
+		}
+
+	 */
+
+	/*// 중간고사 2번
+	int seg6on=0,set5on=0;
+	int seg6num=0,seg5num=1;
+	int flag=0, dip_data, push_data;
+	int time=0, time1=0;
+	int check_play=0;
+	int index=0;
+	while(1){
+		push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+							~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+							~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+							~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+		dip_data = ( GPIO_READ(GPIO_PORTA, 0x08) >> 3 ) |
+					( GPIO_READ(GPIO_PORTA, 0x40) >> 5 ) |
+					( GPIO_READ(GPIO_PORTA, 0x80) >> 5 ) |
+					( GPIO_READ(GPIO_PORTB, 0x08) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x40) >> 2 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x20) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x10) << 2 ) |
+					( GPIO_READ(GPIO_PORTG, 0x40) << 1 );
+
+		if(dip_data&0x80){
+			check_play=1;
+		}
+		else{
+			check_play=0;
+		}
+
+				if(seg6on==1){
+					time++;
+					if(time==500000){
+
+						WRITE_FND(6,seg6num);
+						seg6num++;
+						if(seg6num==5){
+							delay(1000000);
+							set5on=1;
+							WRITE_FND(5,1);
+							delay(3000000);
+							WRITE_FND(5,2);
+							seg6num=0;
+							if(check_play==1){
+								GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+								Play(PlayList[index]);
+								DelayForPlay(DLY_8);
+								GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+								WDT1LOAD = 0xffffffff;
+								index++;
+								if(index==7) index=0;
+							}
+						}
+
+						time=0;
+					}
+
+				}
+
+
+
+		        if(!flag){
+		           if(push_data & 0x1){
+		        	   GPIO_WRITE(GPIO_PORTM, 0x0f, 1);
+		        	   delay(2000000);
+		        	   GPIO_WRITE(GPIO_PORTM, 0x0f,3);delay(2000000);
+		        	   GPIO_WRITE(GPIO_PORTM, 0x0f, 7);delay(2000000);
+		        	   GPIO_WRITE(GPIO_PORTM, 0x0f, 15);delay(2000000);
+		        	   seg6on=1;
+		        	   seg6num=0;
+		              flag=1;
+		           }
+		           if(push_data & 0x02){ //push 2踰??꾨Ⅴ硫??낆뭅?댄듃
+
+
+		              flag=1;
+		           }
+
+		        }
+		        else if(flag && !(push_data & 0x1) && !(push_data & 0x2)){
+		           flag=0;
+		        }
+	}
+	*/
+
+
+	/*// 중간고사 3번
+	int flag=0;
+	int push_data;
+	int check_play=0;
+	int index=0;
+	int cnt=0;
+	int savelist[3];
+	int i,j;
+	while(1){
+		push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+									~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+									~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+									~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+
+
+		if(!flag){
+			if(push_data & 0x01){
+				flag=1;
+				check_play=1;
+
+			}
+			if(push_data & 0x02){
+				flag=1;
+				savelist[cnt]=index;
+				WRITE_FND(cnt+1,index+1);
+				cnt++;
+				check_play=0;
+				index=0;
+
+			}
+			if(push_data & 0x04){
+				flag=1;
+				while(1){
+					for(i=0;i<3;i++){
+						WRITE_FND(i+1,savelist[i]);
+						GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+						Play(PlayList[savelist[i]]);
+						DelayForPlay(DLY_8);
+						GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+					}
+				}
+
+			}
+			if(push_data & 0x08){
+				flag=1;
+
+			}
+		}
+		else if(flag && !(push_data & 0x1) && !(push_data & 0x2) &&
+				!(push_data & 0x4) &&!(push_data & 0x8)){
+			flag=0;
+		}
+
+		if(check_play==1){
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(PlayList[index]);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+			index++;
+			if(index==7) index=0;
+		}
+		if(cnt>0){
+			for(j=0;j<cnt;j++){
+				WRITE_FND(j+1,savelist[j]);
+			}
+		}
+
+	}
+	*/
+
+
+
+	/*//1번 1,2,3 입력시 도레미, led 1,2,3, fnd 1,2,3 출력
+	DrawRect_fill(buffer, 0, 0, 60, 272, COLOR_RED);
+	DrawRect_fill(buffer, 60, 0, 120, 272, COLOR_ORANGE);
+	DrawRect_fill(buffer, 120, 0,180, 272, COLOR_YELLOW);
+	DrawRect_fill(buffer, 180, 0, 240, 272, COLOR_GREEN);
+	DrawRect_fill(buffer, 240, 0, 300, 272, COLOR_BLUE);
+	DrawRect_fill(buffer, 300, 0, 360, 272, COLOR_CYAN);
+	DrawRect_fill(buffer, 360, 0, 420, 272, COLOR_PUPLE);
+	DrawRect_fill(buffer, 420, 0, 480, 272, COLOR_BLACK);
+	int code;
+	while(1){
+
+		code = Uart_GetKey();
+
+		Uart_PutCh(code);
+
+		if(code=='1'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 1);
+			WRITE_FND(6,1);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(C1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+
+		}
+		else if(code=='2'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 2);
+			WRITE_FND(6,2);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(D1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+		else if(code=='3'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 4);
+			WRITE_FND(6,3);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(E1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+		else if(code=='4'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 8);
+			WRITE_FND(6,4);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(F1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+		else if(code=='5'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 1);
+			WRITE_FND(6,5);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(G1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+		else if(code=='6'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 2);
+			WRITE_FND(6,6);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(A1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+		else if(code=='7'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 4);
+			WRITE_FND(6,7);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(B1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+		else if(code=='8'){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 8);
+			WRITE_FND(6,8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(C2);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+		}
+
+		if(code == 0){
+			continue;
+		}
+
+		WDT1LOAD = 0xffffffff;
+		delay(100000);
+
+	}
+	*/
+
+	/*
+	GPIO_WRITE(GPIO_PORTL, 0x0f, 1);
+	WRITE_FND(6,5);
+	DrawRect_fill(buffer, 50,50,100,100,COLOR_BLUE);
+	int push_data, dip_data;
+	while (1){
+		push_data = ~( GPIO_READ(GPIO_PORTP, 0x02) >> 1 ) &
+							~( GPIO_READ(GPIO_PORTN, 0x08) >> 2 ) &
+							~( GPIO_READ(GPIO_PORTE, 0x20) >> 3 ) &
+							~( GPIO_READ(GPIO_PORTK, 0x80) >> 4 );
+		dip_data = ( GPIO_READ(GPIO_PORTA, 0x08) >> 3 ) |
+					( GPIO_READ(GPIO_PORTA, 0x40) >> 5 ) |
+					( GPIO_READ(GPIO_PORTA, 0x80) >> 5 ) |
+					( GPIO_READ(GPIO_PORTB, 0x08) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x40) >> 2 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x20) >> 0 ) |
+					( GPIO_READ(GPIO_PORTQ, 0x10) << 2 ) |
+					( GPIO_READ(GPIO_PORTG, 0x40) << 1 );
+
+		Scroll_right(buffer, 0, 0, 480, 272, 3);
+		//GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+		//Play(C1);
+		//DelayForPlay(DLY_8);
+		//GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+	}
+	*/
+}
+
+/*
+//1번
+int32_t PointerMessage(uint32_t ui32Message, int32_t i32X, int32_t i32Y){
+    if(user_X >= 0 && user_X < 480 && user_Y >= 0 && user_Y < 272){
+    	//Uart_Printf("TEST 0 x : %d, y : %d \n\r", user_X, user_Y);
+    	int x = user_X, y = user_Y;
+    	if(x<60 && x>0 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 1);
+			WRITE_FND(6,1);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(C1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+			//Uart_Printf("도 \n\r");
+    	}
+    	else if(x<120 && x>60 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 2);
+			WRITE_FND(6,2);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(D1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+			//Uart_Printf("레 \n\r");
+    	}
+    	else if(x<180 && x>120 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 4);
+			WRITE_FND(6,3);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(E1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+    	}
+    	else if(x<240 && x>180 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 8);
+			WRITE_FND(6,4);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(F1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+    	}
+    	else if(x<300 && x>240 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 1);
+			WRITE_FND(6,5);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(G1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+    	}
+    	else if(x<360 && x>300 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 2);
+			WRITE_FND(6,6);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(A1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+    	}
+    	else if(x<420 && x>360 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 4);
+			WRITE_FND(6,7);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(B1);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+    	}
+    	else if(x<480 && x>420 && y<272 && y>0){
+			GPIO_WRITE(GPIO_PORTL, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 0);
+			GPIO_WRITE(GPIO_PORTM, 0x0f, 8);
+			WRITE_FND(6,8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, 0x10);
+			Play(C2);
+			DelayForPlay(DLY_8);
+			GPIO_WRITE(GPIO_PORTD, 0x10, ~0x10);
+			WDT1LOAD = 0xffffffff;
+    	}
+    }
+    delay(100000);
+
+}
+*/
+
+
+

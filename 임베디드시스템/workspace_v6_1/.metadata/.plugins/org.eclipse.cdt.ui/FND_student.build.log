@@ -1,0 +1,28 @@
+
+**** Build of configuration Debug for project FND_student ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/examples/boards/dk-tm4c129x" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 20: warning #225-D: function "DIP_init" declared implicitly
+"../main.c", line 21: warning #225-D: function "PUSH_init" declared implicitly
+"../main.c", line 23: warning #225-D: function "LED_init" declared implicitly
+"../main.c", line 53: warning #225-D: function "WRITE_FND" declared implicitly
+"../main.c", line 67: warning #225-D: function "delay" declared implicitly
+"../main.c", line 11: warning #552-D: variable "ui32SysClock" was set but never used
+"../main.c", line 25: warning #179-D: variable "set5on" was declared but never referenced
+"../main.c", line 26: warning #552-D: variable "seg5num" was set but never used
+"../main.c", line 27: warning #552-D: variable "dip_data" was set but never used
+"../main.c", line 28: warning #179-D: variable "time1" was declared but never referenced
+"../main.c", line 565: warning #161-D: declaration is incompatible with previous "delay" (declared at line 67)
+'Finished building: ../main.c'
+' '
+'Building target: FND_student.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off -z -m"FND_student.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/lib" -i"C:/ti/TivaWare_C_Series-2.1.0.12573/driverlib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="FND_student_linkInfo.xml" --rom_model -o "FND_student.out" "./MyLib.obj" "./main.obj" "./tm4c129xnczad_startup_ccs.obj" "../tm4c129xnczad.cmd"  -l"libc.a" -l"C:/ti/TivaWare_C_Series-2.1.0.12573/driverlib/ccs/Debug/driverlib.lib" -l"C:/ti/TivaWare_C_Series-2.1.0.12573/grlib/ccs/Debug/grlib.lib" 
+<Linking>
+'Finished building target: FND_student.out'
+' '
+
+**** Build Finished ****

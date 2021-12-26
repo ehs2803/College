@@ -1,0 +1,17 @@
+
+**** Build of configuration Debug for project LCD_Draw_figure_exam_1 ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/third_party" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=ENABLE_LFN --define=TARGET_IS_TM4C129_RA0 --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+'Finished building: ../main.c'
+' '
+'Building target: LCD_Draw_figure_exam_1.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --gcc --define=ccs="ccs" --define=ENABLE_LFN --define=TARGET_IS_TM4C129_RA0 --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off -z -m"LCD_Draw_figure_exam_1.map" --heap_size=0 --stack_size=2048 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/lib" -i"C:/ti/TivaWare_C_Series-2.1.0.12573/driverlib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="LCD_Draw_figure_exam_1_linkInfo.xml" --rom_model -o "LCD_Draw_figure_exam_1.out" "./main.obj" "./myLib.obj" "./pinout.obj" "./tm4c129xnczad_startup_ccs.obj" "./third_party/fatfs/src/option/cc932.obj" "./third_party/fatfs/port/mmc-dk-tm4c129x.obj" "./drivers/mx66l51235f.obj" "../tm4c129xnczad.cmd"  -l"libc.a" -l"C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib\ccs\Debug\driverlib.lib" 
+<Linking>
+'Finished building target: LCD_Draw_figure_exam_1.out'
+' '
+
+**** Build Finished ****

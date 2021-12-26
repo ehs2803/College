@@ -1,0 +1,71 @@
+
+**** Build of configuration Debug for project BUZZER_Timer ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/examples/boards/dk-tm4c129x" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 8: error #20: identifier "uint32_t" is undefined
+"../main.c", line 11: warning #225-D: function "SysCtlClockFreqSet" declared implicitly
+"../main.c", line 11: error #20: identifier "SYSCTL_XTAL_25MHZ" is undefined
+"../main.c", line 12: error #20: identifier "SYSCTL_OSC_MAIN" is undefined
+"../main.c", line 12: error #20: identifier "SYSCTL_USE_PLL" is undefined
+"../main.c", line 13: error #20: identifier "SYSCTL_CFG_VCO_480" is undefined
+"../main.c", line 14: warning #225-D: function "TIMER_init" declared implicitly
+"../main.c", line 15: warning #225-D: function "BUZZER_init" declared implicitly
+"../main.c", line 16: warning #225-D: function "PUSH_init" declared implicitly
+"../main.c", line 17: warning #225-D: function "FND_init" declared implicitly
+"../main.c", line 18: warning #225-D: function "WDTinitISR" declared implicitly
+"../main.c", line 20: warning #225-D: function "GPIO_WRITE" declared implicitly
+"../main.c", line 20: error #20: identifier "GPIO_PORTD" is undefined
+"../main.c", line 21: error #20: identifier "GPTMCTL" is undefined
+"../main.c", line 23: warning #225-D: function "BUZZER_clear" declared implicitly
+"../main.c", line 38: error #20: identifier "C1" is undefined
+"../main.c", line 38: error #20: identifier "D1" is undefined
+"../main.c", line 38: error #20: identifier "E1" is undefined
+"../main.c", line 38: error #20: identifier "F1" is undefined
+"../main.c", line 38: error #20: identifier "G1" is undefined
+"../main.c", line 38: error #20: identifier "A1" is undefined
+"../main.c", line 38: error #20: identifier "B1" is undefined
+"../main.c", line 41: warning #225-D: function "GPIO_READ" declared implicitly
+"../main.c", line 41: error #20: identifier "GPIO_PORTP" is undefined
+"../main.c", line 42: error #20: identifier "GPIO_PORTN" is undefined
+"../main.c", line 43: error #20: identifier "GPIO_PORTE" is undefined
+"../main.c", line 44: error #20: identifier "GPIO_PORTK" is undefined
+"../main.c", line 46: error #20: identifier "GPIO_PORTA" is undefined
+"../main.c", line 49: error #20: identifier "GPIO_PORTB" is undefined
+"../main.c", line 50: error #20: identifier "GPIO_PORTQ" is undefined
+"../main.c", line 53: error #20: identifier "GPIO_PORTG" is undefined
+"../main.c", line 58: warning #225-D: function "Play" declared implicitly
+"../main.c", line 59: warning #225-D: function "DelayForPlay" declared implicitly
+"../main.c", line 59: error #20: identifier "DLY_8" is undefined
+"../main.c", line 67: warning #225-D: function "WRITE_FND" declared implicitly
+"../main.c", line 93: warning #225-D: function "Play" declared implicitly
+"../main.c", line 94: warning #225-D: function "DelayForPlay" declared implicitly
+"../main.c", line 94: error #20: identifier "DLY_8" is undefined
+"../main.c", line 339: warning #112-D: statement is unreachable
+"../main.c", line 5: warning #179-D: variable "buzzer_cnt" was declared but never referenced
+"../main.c", line 6: warning #179-D: variable "buzzer_count" was declared but never referenced
+"../main.c", line 30: warning #552-D: variable "dip_data" was set but never used
+"../main.c", line 34: warning #179-D: variable "i" was declared but never referenced
+"../main.c", line 344: error #20: identifier "GPTMCTL" is undefined
+"../main.c", line 346: warning #225-D: function "BUZZER_clear" declared implicitly
+"../main.c", line 350: warning #225-D: function "GPIO_WRITE" declared implicitly
+"../main.c", line 350: error #20: identifier "GPIO_PORTD" is undefined
+"../main.c", line 354: warning #225-D: function "GPIO_WRITE" declared implicitly
+"../main.c", line 354: error #20: identifier "GPIO_PORTD" is undefined
+"../main.c", line 355: error #20: identifier "WDT1LOAD" is undefined
+"../main.c", line 359: error #20: identifier "GPTMTAILR" is undefined
+"../main.c", line 359: error #20: identifier "buzzer" is undefined
+"../main.c", line 360: error #20: identifier "GPTMTMATCHR" is undefined
+"../main.c", line 364: warning #225-D: function "GPIO_WRITE" declared implicitly
+"../main.c", line 364: error #20: identifier "GPIO_PORTL" is undefined
+"../main.c", line 365: error #20: identifier "GPIO_PORTM" is undefined
+"../main.c", line 366: warning #225-D: function "delay" declared implicitly
+33 errors detected in the compilation of "../main.c".
+
+>> Compilation failure
+gmake: *** [main.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****

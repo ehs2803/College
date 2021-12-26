@@ -1,0 +1,30 @@
+
+**** Build of configuration Debug for project PUSH_student ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/examples/boards/dk-tm4c129x" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 26: warning #225-D: function "FND_init" declared implicitly
+"../main.c", line 27: warning #225-D: function "FND_clear" declared implicitly
+"../main.c", line 28: warning #225-D: function "DIP_init" declared implicitly
+"../main.c", line 252: warning #225-D: function "WRITE_FND" declared implicitly
+"../main.c", line 257: warning #225-D: function "WRITE_FND" declared implicitly
+"../main.c", line 261: warning #225-D: function "WRITE_FND" declared implicitly
+"../main.c", line 305: warning #112-D: statement is unreachable
+"../main.c", line 8: warning #552-D: variable "ui32SysClock" was set but never used
+"../main.c", line 20: warning #179-D: variable "num1" was declared but never referenced
+"../main.c", line 21: warning #179-D: variable "isResult" was declared but never referenced
+"../main.c", line 22: warning #179-D: variable "isMinus" was declared but never referenced
+"../main.c", line 23: warning #179-D: variable "hour" was declared but never referenced
+"../main.c", line 23: warning #179-D: variable "minute" was declared but never referenced
+"../main.c", line 23: warning #179-D: variable "second" was declared but never referenced
+"../main.c", line 24: warning #179-D: variable "time" was declared but never referenced
+"../main.c", line 329: error #20: identifier "fnd_pos" is undefined
+1 error detected in the compilation of "../main.c".
+
+>> Compilation failure
+gmake: *** [main.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****

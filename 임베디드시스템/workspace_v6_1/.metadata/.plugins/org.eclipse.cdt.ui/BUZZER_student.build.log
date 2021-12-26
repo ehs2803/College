@@ -1,0 +1,32 @@
+
+**** Build of configuration Debug for project BUZZER_student ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../MyLib.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/examples/boards/dk-tm4c129x" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="MyLib.pp"  "../MyLib.c"
+"../MyLib.c", line 62: error #20: identifier "GPIO_PORTH_PC" is undefined
+"../MyLib.c", line 64: error #20: identifier "GPIO_PORTC_PC" is undefined
+"../MyLib.c", line 65: error #20: identifier "GPIO_PORTG_PC" is undefined
+"../MyLib.c", line 67: error #20: identifier "GPIO_PORTH_DR2R" is undefined
+"../MyLib.c", line 69: error #20: identifier "GPIO_PORTC_DR2R" is undefined
+"../MyLib.c", line 70: error #20: identifier "GPIO_PORTG_DR2R" is undefined
+"../MyLib.c", line 72: error #20: identifier "GPIO_PORTH_DR4R" is undefined
+"../MyLib.c", line 74: error #20: identifier "GPIO_PORTC_DR4R" is undefined
+"../MyLib.c", line 75: error #20: identifier "GPIO_PORTG_DR4R" is undefined
+"../MyLib.c", line 77: error #20: identifier "GPIO_PORTH_DR8R" is undefined
+"../MyLib.c", line 79: error #20: identifier "GPIO_PORTC_DR8R" is undefined
+"../MyLib.c", line 80: error #20: identifier "GPIO_PORTG_DR8R" is undefined
+"../MyLib.c", line 82: error #20: identifier "GPIO_PORTH_SLR" is undefined
+"../MyLib.c", line 84: error #20: identifier "GPIO_PORTC_SLR" is undefined
+"../MyLib.c", line 85: error #20: identifier "GPIO_PORTG_SLR" is undefined
+"../MyLib.c", line 87: error #20: identifier "GPIO_PORTH_DR12R" is undefined
+"../MyLib.c", line 89: error #20: identifier "GPIO_PORTC_DR12R" is undefined
+"../MyLib.c", line 90: error #20: identifier "GPIO_PORTG_DR12R" is undefined
+18 errors detected in the compilation of "../MyLib.c".
+
+>> Compilation failure
+gmake: *** [MyLib.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****

@@ -1,0 +1,19 @@
+
+**** Build of configuration Debug for project LED_student ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/examples/boards/dk-tm4c129x" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"..\cortex_m4.h", line 166: warning #1-D: last line of file ends without a newline
+"../main.c", line 9: warning #552-D: variable "g_ui32SysClock" was set but never used
+'Finished building: ../main.c'
+' '
+'Building target: LED_student.out'
+'Invoking: ARM Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --gcc --define=ccs="ccs" --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off -z -m"LED_student.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/lib" -i"C:/ti/TivaWare_C_Series-2.1.0.12573/driverlib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="LED_student_linkInfo.xml" --rom_model -o "LED_student.out" "./MyLib.obj" "./main.obj" "./prob1.obj" "./tm4c129xnczad_startup_ccs.obj" "../tm4c129xnczad.cmd"  -l"libc.a" -l"C:/ti/TivaWare_C_Series-2.1.0.12573/driverlib/ccs/Debug/driverlib.lib" -l"C:/ti/TivaWare_C_Series-2.1.0.12573/grlib/ccs/Debug/grlib.lib" 
+<Linking>
+'Finished building target: LED_student.out'
+' '
+
+**** Build Finished ****

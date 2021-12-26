@@ -1,0 +1,38 @@
+
+**** Build of configuration Debug for project LCD_TOUCH ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../main.c'
+'Invoking: ARM Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.2/include" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573/third_party" --include_path="C:/ti/TivaWare_C_Series-2.1.0.12573" -g --gcc --define=ccs="ccs" --define=ENABLE_LFN --define=TARGET_IS_TM4C129_RA0 --define=PART_TM4C129XNCZAD --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+"../main.c", line 47: error #7: unrecognized token
+"../main.c", line 47: error #171: expected a declaration
+"../main.c", line 68: warning #12-D: parsing restarts here after previous syntax error
+"../main.c", line 72: warning #78-D: this declaration has no storage class or type specifier
+"../main.c", line 72: warning #93-D: identifier-list parameters may only be used in a function definition
+"../main.c", line 72: error #148: declaration is incompatible with "void LCD_Init(unsigned long)" (declared at line 77 of "..\myLib.h")
+"../main.c", line 74: warning #78-D: this declaration has no storage class or type specifier
+"../main.c", line 74: warning #93-D: identifier-list parameters may only be used in a function definition
+"../main.c", line 74: error #148: declaration is incompatible with "void TouchScreenInit(uint32_t)" (declared at line 48 of "..\touch.h")
+"../main.c", line 78: warning #78-D: this declaration has no storage class or type specifier
+"../main.c", line 78: error #148: declaration is incompatible with "void TIMER_init()" (declared at line 45 of "..\myLib.h")
+"../main.c", line 79: warning #78-D: this declaration has no storage class or type specifier
+"../main.c", line 79: error #148: declaration is incompatible with "void BUZZER_init()" (declared at line 44 of "..\myLib.h")
+"../main.c", line 80: error #41: expected an identifier
+"../main.c", line 80: error #80: expected a type specifier
+"../main.c", line 80: error #146: function "<error>" may not be initialized
+"../main.c", line 81: warning #78-D: this declaration has no storage class or type specifier
+"../main.c", line 81: error #148: declaration is incompatible with "void BUZZER_clear()" (declared at line 48 of "..\myLib.h")
+"../main.c", line 82: warning #78-D: this declaration has no storage class or type specifier
+"../main.c", line 82: error #148: declaration is incompatible with "void WDTinitISR(void)" (declared at line 51 of "..\myLib.h")
+"../main.c", line 91: error #171: expected a declaration
+"../main.c", line 114: warning #12-D: parsing restarts here after previous syntax error
+"../main.c", line 115: error #171: expected a declaration
+
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+>> Compilation failure
+13 errors detected in the compilation of "../main.c".
+gmake: *** [main.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
