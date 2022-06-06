@@ -7,6 +7,7 @@
 #define NO_KEYWORDS 7
 #define ID_LENGTH 12
 
+
 enum tsymbol {
     tnull = -1,
     tnot, tnotequ, tmod, tmodAssign, tident, tnumber,
