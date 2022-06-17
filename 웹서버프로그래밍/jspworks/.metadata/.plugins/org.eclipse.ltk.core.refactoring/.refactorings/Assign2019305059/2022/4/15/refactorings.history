@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Assign2019305059/src/main/webapp/Assign4/checkOut.jsp&apos; to &apos;checkOut_2019305059.jsp&apos;" description="Rename resource &apos;checkOut.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/Assign4/checkOut.jsp" name="checkOut_2019305059.jsp" stamp="1649154877805" updateReferences="true"/>
+</session>

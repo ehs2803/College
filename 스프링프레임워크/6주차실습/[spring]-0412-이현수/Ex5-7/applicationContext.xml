@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="messageBean" class="sample3.MessageBeanKo">
+</bean>
+
+</beans>
+
+<!--  
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="operatorBean" class="Ex3_3.PlusOp" >
+		<constructor-arg index="0" value="20.0" />
+		<constructor-arg index="1" value="15.0" />
+	</bean>
+</beans>
+-->
+<!--  
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="messageBean" class="sample1.MessageBeanImpl" >
+		<constructor-arg>
+			<value>Spring</value>
+		</constructor-arg>
+		<property name="greeting">
+			<value>Hello, </value>
+		</property> 
+		<property name="outputter" ref="ouputter" />
+	</bean>
+	<bean id="outputter" class="sample1.FileOutputter">
+		<property name="filePath">
+			<value>out.txt</value>
+		</property>
+	</bean>
+</beans>
+-->

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <title>Assign1_이현수</title>
+     <!-- id temp text style을 italic으로-->
+     <!--caption요소 캡션위치를 bottom 그리고 중앙에 정렬-->
+     <style> 
+          #temp{
+               font-style: italic;
+          }
+          caption{
+               caption-side: bottom;
+               text-align: center;
+          }
+     </style>
+</head>
+<body>
+     <div id="temp">
+          Written by 이현수 <br>
+          <a href="hr2803@naver.com">Email us</a><br> <!--a태그 사용-->
+          Address: 경기도 고양시 일산동구 마두2동 <br>
+          Phone : 010-4786-2803 <br>   
+     </div>
+     <br>
+     수평선 위 <br><br>
+     <hr> 
+     <!-- hr요소는 수평 가로선 정의-->
+     <br>
+     수평선 아래 <br><br>
+     <!-- table 만들기.-->
+     <table border="1">
+          <caption>[표1] 시간표</caption>
+          <th>시작시간</th>
+          <th>업무</th>
+          <th>종료시간</th>
+          <tr>
+               <td>09:30</td>
+               <td>오전 회의</td>
+               <td>10:00</td>
+          </tr>
+     </table>
+     <!-- table 만들기 - rowspan 사용-->
+     <table border="1">
+          <th>물품</th>
+          <th>가격</th>
+          <tr>
+               <td>프로그램</td>
+               <td rowspan="2">200,000</td>
+          </tr>
+          <tr>
+               <td>키보드</td>
+          </tr>
+     </table>
+     <!-- table 만들기 - colspan 사용-->
+     <table border="1">
+          <th>1번 셀</th>
+          <th>2번 셀</th>
+          <tr>
+               <td colspan="2">1번과 2번 병합</td>
+          </tr>
+     </table>
+     <br>
+     <!--sub태그 사용해 아랫첨자 표시-->
+     물의 화학식은 H<sub>2</sub>O 이다. <br><br>
+     <!--sup태그 사용해 윗첨자 표시-->
+     2<sup>4</sup> = 16 <br><br>
+     <!--input태그 type은 radio. name을 같게해줌으로써 둘 중 한개만 선택하게 구현-->
+     야구 <input type="radio" name="exercise" value="baseball"> <br>
+     축구 <input type="radio" name="exercise" value="soccer"> <br>
+     <!--select 태그 사용해 드롭다운 리스트 표시. option태그 사용해 내용물 표시.-->
+     <select>
+          <option>배</option>
+          <option>사과</option>
+          <option>귤</option>
+     </select>
+</body>
+</html>

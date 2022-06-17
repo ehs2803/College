@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Ex3_3.OpertorBean&apos; to &apos;OperatorBean&apos;&#x0D;&#x0A;- Original project: &apos;Hello&apos;&#x0D;&#x0A;- Original element: &apos;Ex3_3.OpertorBean&apos;&#x0D;&#x0A;- Renamed element: &apos;Ex3_3.OperatorBean&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;OpertorBean&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;Ex3_3{OpertorBean.java[OpertorBean" matchStrategy="1" name="OperatorBean" qualified="false" references="true" similarDeclarations="false" stamp="1648524406475" textual="false" version="1.0"/>
+</session>
